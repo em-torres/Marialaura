@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
+from .db_password import user, user_pass
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
@@ -28,14 +29,14 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'yourgmail@gmail.com'
-EMAIL_HOST_PASSWORD = 'yourpassword'
+EMAIL_HOST_USER = user
+EMAIL_HOST_PASSWORD = user_pass
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-''' 
+'''
 If using gmail, you will need to
-unlock Captcha to enable Django 
+unlock Captcha to enable Django
 to  send for you:
 https://accounts.google.com/displayunlockcaptcha
 '''
