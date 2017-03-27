@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
-from .db_password import user, user_pass
+from .db_password import user, user_pass, Braintree, secrety
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'csqwlmc8s55o($rt6ozh7u+ui9zb-et00w$d90j8$^!nvj41_r'
+SECRET_KEY = secrety
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -153,10 +153,10 @@ LOGIN_REDIRECT_URL = '/'
 
 
 #Braintree Payments Details
-BRAINTREE_PUBLIC = "qn3p5n7njksw47r3"
-BRAINTREE_PRIVATE = "d14ac944794c0df1c81991ecf49221ff"
-BRAINTREE_MERCHANT_ID = "n84nynknvzz3j3sz"
-BRAINTREE_ENVIRONEMNT = "Sandbox"
+BRAINTREE_PUBLIC = Braintree['public_key']
+BRAINTREE_PRIVATE = Braintree['private_key']
+BRAINTREE_MERCHANT_ID = Braintree['merchant_id']
+BRAINTREE_ENVIRONEMNT = Braintree['environment']
 
 
 
