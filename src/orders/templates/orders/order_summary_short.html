@@ -1,22 +1,38 @@
 <p class='lead'>
-Order {% if order.order_id %}#{{ order.order_id }}{% endif %} Summary</p>
+Order {% if order.order_id %}#{{ order.order_id }} {% endif %} Summary
+</p>
+<div>
+<table class="table table-bordered">
+    <thead>
+        <th>Cantidad</th>
+        <th>Detalle</th>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{ order.cart.cartitem_set.count }} Item(s)</td>
+        {% for i in order.cart.cartitem_set.all %}
+        <tr>
+        <td><li>{{ i.day }} - <span>{{ i.item.get_title }}</span> </li></td>
+        <tr>
+        {% endfor %}
+    </tr>
+    <tr>
+       <td>
 
-<table class='table'>
-<tr><td>{{ order.cart.cartitem_set.count }} Item(s): <br/>{% for i in order.cart.cartitem_set.all %}
-<b>{{ i.item.get_title }}</b><br/>
-{% endfor %}</td></tr>
-<tr><td>Cart Subtotal: {{ order.cart.subtotal }}</td></tr>
-<tr><td>Tax: {{ order.cart.tax_total }}</td></tr>
-<tr><td>Items Total: {{ order.cart.total }}</td></tr>
-
-<tr><td>Shipping: {{ order.shipping_total_price }}</td></tr>
-<tr><td>Order Total: {{ order.order_total }}</td></tr>
-
-
+Cart Subtotal: {{ order.cart.subtotal }}
+Tax: {{ order.cart.tax_total }}
+Items Total: {{ order.cart.total }}
+Shipping: {{ order.shipping_total_price }}
+Order Total: {{ order.order_total }}
+    </td>
+</tr>
+    </tbody>
 </table>
+
+
 </div>
 
-<div class='col-sm-4 col-sm-offset-4 text-center'>
+<div class='col-md-4 col-md-offset-4 text-center'>
 
 <p><b>Billing to</b>
 <br/>
@@ -25,4 +41,4 @@ Order {% if order.order_id %}#{{ order.order_id }}{% endif %} Summary</p>
 <p><b>Shipping to</b>
 <br/>
 {{ order.shipping_address.get_address }}
-<p>
+</p></div>
