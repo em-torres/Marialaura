@@ -1,0 +1,242 @@
+<!-- Lado izquierdo y primeras opciones -->
+<div class="row">
+			<div class="col-sm-6">
+
+				<div class="menu">
+					<div class="row">
+						<div class="col-sm-8">
+							<h4 class="menu-title">{{object.mo1}}</h4>
+
+							<div class="menu-detail">
+							{% if object.mo1.variation_set.count > 1 %}
+								{% for var_obj in object.mo1.variation_set.all %}
+									{{var_obj}} /
+								{% endfor %}
+
+							{% else  %}
+								{{ object.mo1.variation_set.first.title }}
+							{% endif %}
+							</div>
+						</div>
+						<div class="col-sm-4 menu-price-detail">
+							<h4 class="menu-price">Lunes <input type="checkbox" name="day" value="Lunes"></h4>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="menu">
+					<div class="row">
+						<div class="col-sm-8">
+							<h4 class="menu-title">{{object.tu1}}</h4>
+
+							<div class="menu-detail">
+							{% if object.tu1.variation_set.count > 1 %}
+								{% for var_obj in object.tu1.variation_set.all %}
+									{{var_obj}} /
+								{% endfor %}
+
+							{% else  %}
+								{{ object.mo1.variation_set.first.title }}
+							{% endif %}
+							</div>
+						</div>
+						<div class="col-sm-4 menu-price-detail">
+							<h4 class="menu-price">Martes <input type="checkbox" name="dish" value="Martes"></h4>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="menu">
+					<div class="row">
+						<div class="col-sm-8">
+							<h4 class="menu-title">{{object.we1}}</h4>
+
+							<div class="menu-detail">
+							{% if object.we1.variation_set.count > 1 %}
+								{% for var_obj in object.we1.variation_set.all %}
+									{{var_obj}} /
+								{% endfor %}
+
+							{% else  %}
+								{{ object.we1.variation_set.first.title }}
+							{% endif %}
+							</div>
+						</div>
+						<div class="col-sm-4 menu-price-detail">
+							<h4 class="menu-price">Miercoles <input type="checkbox" name="day" value="Miercoles"></h4>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="menu">
+					<div class="row">
+						<div class="col-sm-8">
+							<h4 class="menu-title">{{object.th1}}</h4>
+
+							<div class="menu-detail">
+							{% if object.th1.variation_set.count > 1 %}
+								{% for var_obj in object.tu1.variation_set.all %}
+									{{var_obj}} /
+								{% endfor %}
+
+							{% else  %}
+								{{ object.th1.variation_set.first.title }}
+							{% endif %}
+							</div>
+						</div>
+						<div class="col-sm-4 menu-price-detail">
+							<h4 class="menu-price">Jueves <input type="checkbox" name="day" value="Jueves"></h4>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="menu">
+					<div class="row">
+						<div class="col-sm-8">
+							<h4 class="menu-title">{{object.fr1}}</h4>
+
+							<div class="menu-detail">
+							{% if object.fr1.variation_set.count > 1 %}
+								{% for var_obj in object.tu1.variation_set.all %}
+									{{var_obj}} /
+								{% endfor %}
+
+							{% else  %}
+								{{ object.fr1.variation_set.first.title }}
+							{% endif %}
+							</div>
+						</div>
+						<div class="col-sm-4 menu-price-detail">
+							<h4 class="menu-price">Viernes <input type="checkbox" name="day" value="Viernes"></h4>
+
+						</div>
+					</div>
+				</div>
+
+			</div><!-- .col-sm-6 -->
+
+<!-- Lado Derecho y segunda opciones -->
+
+						<div class="col-sm-6">
+
+				<div class="menu">
+					<div class="row">
+						<div class="col-sm-8">
+							<h4 class="menu-title">{{object.mo2}}</h4>
+
+							<div class="menu-detail">
+							{% if object.mo2.variation_set.count > 1 %}
+								{% for var_obj in object.mo1.variation_set.all %}
+									{{var_obj}} /
+								{% endfor %}
+
+							{% else  %}
+								{{ object.mo2.variation_set.first.title }}
+							{% endif %}
+							</div>
+						</div>
+						<div class="col-sm-4 menu-price-detail">
+							<h4 class="menu-price">Lunes <input type="checkbox" name="day" value="Lunes"></h4>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="menu">
+					<div class="row">
+						<div class="col-sm-8">
+							<h4 class="menu-title">{{object.tu2}}</h4>
+
+							<div class="menu-detail">
+							{% if object.tu2.variation_set.count > 1 %}
+								{% for var_obj in object.tu2.variation_set.all %}
+									{{var_obj}} /
+								{% endfor %}
+
+							{% else  %}
+								{{ object.tu1.variation_set.first.title }}
+							{% endif %}
+							</div>
+						</div>
+						<div class="col-sm-4 menu-price-detail">
+							<h4 class="menu-price">Martes <input type="checkbox" name="day" value="Martes"></h4>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="menu">
+					<div class="row">
+						<div class="col-sm-8">
+							<h4 class="menu-title">{{object.we2}}</h4>
+
+							<div class="menu-detail">
+							{% if object.we2.variation_set.count > 1 %}
+								{% for var_obj in object.we2.variation_set.all %}
+									{{var_obj}} /
+								{% endfor %}
+
+							{% else  %}
+								{{ object.we2.variation_set.first.title }}
+							{% endif %}
+							</div>
+						</div>
+						<div class="col-sm-4 menu-price-detail">
+							<h4 class="menu-price">Miercoles <input type="checkbox" name="day" value="Miercoles"></h4>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="menu">
+					<div class="row">
+						<div class="col-sm-8">
+							<h4 class="menu-title">{{object.th2}}</h4>
+
+							<div class="menu-detail">
+							{% if object.th2.variation_set.count > 1 %}
+								{% for var_obj in object.th2.variation_set.all %}
+									{{var_obj}} /
+								{% endfor %}
+
+							{% else  %}
+								{{ object.th2.variation_set.first.title }}
+							{% endif %}
+							</div>
+						</div>
+						<div class="col-sm-4 menu-price-detail">
+							<h4 class="menu-price">Jueves <input type="checkbox" name="day" value="Jueves"></h4>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="menu">
+					<div class="row">
+						<div class="col-sm-8">
+							<h4 class="menu-title">{{object.fr2}}</h4>
+
+							<div class="menu-detail">
+							{% if object.fr2.variation_set.count > 1 %}
+								{% for var_obj in object.fr2.variation_set.all %}
+									{{var_obj}} /
+								{% endfor %}
+
+							{% else  %}
+								{{ object.fr2.variation_set.first.title }}
+							{% endif %}
+							</div>
+						</div>
+						<div class="col-sm-4 menu-price-detail">
+							<h4 class="menu-price">Viernes <input type="checkbox" name="day" value="Viernes"></h4>
+
+						</div>
+					</div>
+				</div>
+
+			</div><!-- .col-sm-6 -->
+	</div><!-- .row -->
