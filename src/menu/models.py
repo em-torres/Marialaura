@@ -19,7 +19,7 @@ class MenuManager(models.Manager):
         return MenuQuerySet(self.model, using=self._db)
 
 def upload_location(instance, filename):
-    return "%s/%s" %(instance.id, filename)
+    return "menu_week/%s/%s" %(instance.id, filename)
 
 
 class MenuWeek(models.Model):
