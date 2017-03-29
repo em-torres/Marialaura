@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+<script>
+{% block jquery %}
+
+// ajax add to cart
+$("#submit-btn").click(function(event){
+	event.preventDefault();
+	var formData = $("#add-form").serialize();
+	var item = formData.split("&");
+	console.log(item);
+	$.ajax({
+		type: "POST", // "GET"
+		url: "{% url 'cart' %}",
+		data: item,
+		success: function(data) {
+			showFlashMessage(data.flash_message);
+			updateCartItemCount();
+		},
+		error: function(response, error) {
+			// console.log(response)
+			// console.log(error)
+			$("#add-form").submit()
+		}
+	})
+})
+{% endblock %}
+</script>
+
+{% block content %}
+	<section id="callout-one" class="callout">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-sm-2 col-sm-offset-5 text-center long-down">
+					{% if object.menu_week.image %}
+					<img src="{{ object.menu_week.image.url }}" alt="" style="width=400; Height=250;">
+					{% else %}
+					<img src="" alt=""> AAAAAA
+					{% endif %}
+				</div>
+			</div><!-- .row -->
+
+			<div class="row">
+				<div class="col-sm-10 col-sm-offset-1">
+					<h2 class="callout-text"><a href="{{ object.menu_week.get_absolute_url }}">{{ object.menu_week }}</a></h2>
+				</div>
+			</div><!-- .row -->
+
+		</div><!-- .container -->
+	</section>
+<form id='add-form' method='GET' action="{% url 'cart' %}">
+<p id='jquery-message' class='lead'></p>
+{% include "menu/menu_select.html" with object=object %}
+<br/>
+	<input class='form-control' type='number' name='qty' value='1' />
+<br/>
+<input id='submit-btn' type='submit' value='Add to Cart' class='btn btn-default' />
+</form>
+
+
+
+{% endblock %}

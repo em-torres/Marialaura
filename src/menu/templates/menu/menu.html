@@ -1,0 +1,30 @@
+
+
+{% for object in object_list %}
+ {% if object.menu_week.start_date >= today  or object.menu_week.end_date >= today %}
+	<section id="callout-one" class="callout">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-sm-2 col-sm-offset-5 text-center long-down">
+					{% if object.menu_week.image %}
+					<img src="{{ object.menu_week.image.url }}" alt="" style="width=400; Height=250;">
+					{% else %}
+					<img src="" alt=""> AAAAAA
+					{% endif %}
+				</div>
+			</div><!-- .row -->
+
+			<div class="row">
+				<div class="col-sm-10 col-sm-offset-1">
+					<h2 class="callout-text"><a href="{{ object.menu_week.get_absolute_url }}">{{ object.menu_week }}</a></h2>
+				</div>
+			</div><!-- .row -->
+
+		</div><!-- .container -->
+	</section>
+
+	<!-- Callout section end -->
+{% include "menu/menu_thumbnail.html" with object=object %}
+ {% endif %}
+{% endfor %}

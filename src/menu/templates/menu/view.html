@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for f in form %}
+{{f.label}}
+{{f}}
+
+	<!--<table border="2">-->
+	<!--<tr>-->
+		<!--<td> Lunes<br></td>-->
+		<!--<td> Martes<br></td>-->
+		<!--<td> Miercoles<br></td>-->
+		<!--<td> Jueves<br></td>-->
+		<!--<td> Viernes<br></td>-->
+	<!--</tr>-->
+	<!--<tr>-->
+		<!--<td class="col-md-3">-->
+			<!--<h1>{{menu.mo1}}</h1>-->
+			<!--<b>Acompaña:</b>-->
+			<!--<br>-->
+			<!--<ul class="radio">-->
+			<!--<li><input type="radio">{{menu.mo1.Variation1}}</input></li>-->
+            <!--<li><input type="radio">{{menu.mo1.Variation2}}</input></li>-->
+			<!--</ul>-->
+			<!--<br>-->
+		<!--</td>-->
+			<!--<td class="col-md-3">-->
+			<!--<h1>{{menu.tu1}}</h1>-->
+			<!--<b>Acompaña:</b>-->
+			<!--<br>-->
+			<!--<ul>-->
+			<!--<li><input type="radio">{{menu.tu1.Variation1}}</li>-->
+			<!--<li><input type="radio">{{menu.tu1.Variation2}}</li>-->
+			<!--</ul>-->
+
+		<!--</td>-->
+		<!--<td class="col-md-3">-->
+			<!--<h1>{{menu.we1}}</h1>-->
+			<!--<b>Acompaña:</b>-->
+			<!--<br>-->
+			<!--<ul>-->
+			<!--<li><input type="radio">{{menu.we1.Variation1}}</li>-->
+			<!--<li><input type="radio">{{menu.we1.Variation2}}</li>-->
+			<!--</ul>-->
+		<!--</td>-->
+		<!--<td class="col-md-3">-->
+			<!--<h1>{{menu.th1}}</h1>-->
+			<!--<b>Acompaña:</b>-->
+			<!--<br>-->
+			<!--<ul>-->
+			<!--<li><input type="radio">{{menu.th1.Variation1}}</li>-->
+			<!--<li><input type="radio">{{menu.th1.Variation2}}</li>-->
+			<!--</ul>-->
+		<!--</td><td class="col-md-3">-->
+			<!--<h1>{{menu.fr1}}</h1>-->
+			<!--<b>Acompaña:</b>-->
+			<!--<br>-->
+			<!--<ul>-->
+			<!--<li><input type="radio">{{menu.fr1.Variation1}}</li>-->
+			<!--<li><input type="radio">{{menu.fr1.Variation2}}</li>-->
+			<!--</ul>-->
+		<!--</td>-->
+	<!--</tr>-->
+	<!--<tr>-->
+		<!--<td class="col-md-3">-->
+
+			<!--<h1>{{menu.mo2}}</h1>-->
+			<!--<b>Acompaña:</b>-->
+			<!--<br>-->
+			<!--<ul>-->
+			<!--<li><input type="radio">{{menu.mo2.Variation1}}</li>-->
+			<!--<li><input type="radio">{{menu.mo2.Variation2}}</li>-->
+			<!--</ul>-->
+		<!--</td>-->
+			<!--<td class="col-md-3">-->
+			<!--<h1><input type="radio">{{menu.tu2}}</h1>-->
+			<!--<b><input type="radio">Acompaña:</b>-->
+			<!--<br>-->
+			<!--<ul>-->
+			<!--<li><input type="radio">{{menu.tu2.Variation1}}</li>-->
+			<!--<li><input type="radio">{{menu.tu2.Variation2}}</li>-->
+			<!--</ul>-->
+		<!--</td>-->
+		<!--<td class="col-md-3">-->
+			<!--<h1>{{menu.we1}}</h1>-->
+			<!--<b>Acompaña:</b>-->
+			<!--<br>-->
+			<!--<ul>-->
+			<!--<li><input type="radio">{{menu.we2.Variation1}}</li>-->
+			<!--<li><input type="radio">{{menu.we2.Variation2}}</li>-->
+			<!--</ul>-->
+		<!--</td>-->
+		<!--<td class="col-md-3">-->
+			<!--<h1>{{menu.th2}}</h1>-->
+			<!--<b>Acompaña:</b>-->
+			<!--<br>-->
+			<!--<ul>-->
+			<!--<li><input type="radio">{{menu.th2.Variation1}}</li>-->
+			<!--<li><input type="radio">{{menu.th2.Variation2}}</li>-->
+			<!--</ul>-->
+		<!--</td><td class="col-md-3">-->
+			<!--<h1>{{menu.fr2}}</h1>-->
+			<!--<b>Acompaña:</b>-->
+			<!--<br>-->
+			<!--<ul>-->
+			<!--<li><input type="radio">{{menu.fr2.Variation1}}</li>-->
+			<!--<li><input type="radio">{{menu.fr2.Variation2}}</li>-->
+			<!--</ul>-->
+		<!--</td>-->
+	<!--</tr>-->
+	<!--</table>-->
+{% endfor %}
+{% endblock %}

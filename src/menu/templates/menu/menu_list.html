@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+{% if object_list|length <= 0 %}
+
+<div class='col-sm-6 col-sm-offset-3 text-center'>
+<p class='lead'>
+You do not currently have Menu
+</p>
+
+</div>
+
+{% else  %}
+
+{% include "menu/menu.html" with object_list=object_list %}
+
+{% endif %}
+{% endblock %}
