@@ -1,4 +1,5 @@
-﻿{% load staticfiles %}
+﻿{% load crispy_forms_tags %}
+{% load staticfiles %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,10 +9,36 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>{% block head_title %}MariaLaura{% endblock %}</title>
+	<title>Leaff Restaurant Theme</title>
 
-	{% include 'head_css.html' %}
+	<!-- CSS -->
+	<!-- Bootstrap core CSS -->
+	<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
 
+	<!-- Font Awesome CSS -->
+	<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" media="screen">
+
+	<!-- Elegant icons CSS -->
+	<link href="{% static 'css/simple-line-icons.css' %}" rel="stylesheet" media="screen">
+
+
+
+	<!-- Magnific-popup lightbox -->
+	<link href="{% static 'css/magnific-popup.css' %}" rel="stylesheet">
+
+	<!-- Owl Carousel -->
+	<link href="{% static 'css/owl.theme.css' %}" rel="stylesheet">
+	<link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet">
+
+	<!-- Animate css -->
+	<link href="{% static 'css/animate.css' %}" rel="stylesheet">
+
+	<!-- Time and Date piker CSS -->
+	<link href="{% static 'css/jquery.timepicker.css' %}" rel="stylesheet" media="screen">
+	<link href="{% static 'css/datepicker.css' %}" rel="stylesheet" media="screen">
+
+	<!-- Custom styles CSS -->
+	<link href="{% static 'css/style.css' %}" rel="stylesheet" media="screen">
 </head>
 <body>
 
@@ -23,11 +50,125 @@
 		</div>
 	</div>
 
-{% include 'navbar.html' %}
+	<!-- Navigation start -->
 
-	{% block content %}
+	<nav class="navbar navbar-custom navbar-transparent navbar-fixed-top" role="navigation">
 
-	{% endblock %}
+		<div class="container">
+
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#custom-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">Leaff</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="custom-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="page-scroll"><a href="#home">Home</a></li>
+					<li class="page-scroll"><a href="#about">Our story</a></li>
+					<li class="page-scroll"><a href="#dishes">Dishes</a></li>
+					<li class="page-scroll"><a href="#popular">Popular</a></li>
+					<li class="page-scroll"><a href="#services">Services</a></li>
+					<li class="page-scroll"><a href="#gallery">Gallery</a></li>
+					<li class="page-scroll"><a href="#reservations">Reservations</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages</a>
+						<ul class="dropdown-menu" role="menu">
+							<li class="dropdown-submenu">
+								<a href="#">Menu simple</a>
+								<ul class="dropdown-menu">
+									<li><a href="menu-simple.html">Menu simple 2 cols</a></li>
+									<li><a href="menu-simple-2.html">Menu simple 3 cols</a></li>
+								</ul>
+							</li>
+							<li class="dropdown-submenu">
+								<a href="#">Menu classic</a>
+								<ul class="dropdown-menu">
+									<li><a href="menu-classic-2.html">Menu classic 2 cols</a></li>
+									<li><a href="menu-classic.html">Menu classic 3 cols</a></li>
+								</ul>
+							</li>
+							<li class="dropdown-submenu">
+								<a href="#">Gallery</a>
+								<ul class="dropdown-menu">
+									<li><a href="gallery.html">Gallery 3 cols</a></li>
+									<li><a href="gallery-2.html">Gallery 4 cols</a></li>
+								</ul>
+							</li>
+							<li class="dropdown-submenu">
+								<a href="#">Contact</a>
+								<ul class="dropdown-menu">
+									<li><a href="contact.html">Contact 1</a></li>
+									<li><a href="contact-2.html">Contact 2</a></li>
+								</ul>
+							</li>
+							<li class="dropdown-submenu">
+								<a href="#">Errors</a>
+								<ul class="dropdown-menu">
+									<li><a href="error-404.html">Error 404 Page</a></li>
+									<li><a href="error-500.html">Error 500 Page</a></li>
+								</ul>
+							</li>
+							<li class="dropdown-submenu">
+								<a href="#">Components</a>
+								<ul class="dropdown-menu">
+									<li><a href="icons.html">Icons</a></li>
+									<li><a href="showcase.html">Showcase</a></li>
+									<li><a href="components.html">Components</a></li>
+								</ul>
+							</li>
+							<li class="dropdown-submenu">
+								<a href="#">Navigation</a>
+								<ul class="dropdown-menu">
+									<li><a href="nav-default.html">Default</a></li>
+									<li><a href="nav-transparent.html">Transparent</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+		</div><!-- .container -->
+
+	</nav>
+
+	<!-- Navigation end -->
+
+	<!-- Home start -->
+
+	<section id="home" class="intro-module slideshow heightfull bg-dark-alfa-30">
+
+		<div class="intro">
+
+			<div class="intro-slider">
+				<!-- Slide 1 -->
+				<div class="owl-item">
+					<h1 class="intro-title">Premium food at affordable price.</h1>
+				</div>
+				<!-- Slide 2 -->
+				<div class="owl-item">
+					<h1 class="intro-title">Relax in our quiet harbor.</h1>
+				</div>
+				<!-- Slide 3 -->
+				<div class="owl-item">
+					<h1 class="intro-title">Impeccable European service.</h1>
+				</div>
+			</div><!-- .intro-slider -->
+
+		</div><!-- .intro -->
+
+		<div class="mouse-icon">
+			<div class="wheel"></div>
+		</div>
+
+	</section>
+
+	<!-- Home end -->
 
 	<!-- About start -->
 
@@ -52,7 +193,7 @@
 			<div class="row">
 				<div class="col-sm-6 col-sm-offset-3">
 					<div class="devider">
-						<img src="assets/images/divider-down.svg" alt="">
+						<img src="{% static 'images/divider-down.svg' %}" alt="">
 					</div>
 				</div>
 			</div><!-- .row -->
@@ -69,7 +210,7 @@
 
 			<div class="row">
 				<div class="col-sm-2 col-sm-offset-5 text-center long-down">
-					<img src="assets/images/divider-top.svg" alt="">
+					<img src="{% static 'images/divider-top.svg' %}" alt="">
 				</div>
 			</div><!-- .row -->
 
@@ -103,9 +244,9 @@
 				<div class="col-sm-4">
 					<div class="menu-classic">
 						<figure class="overlay">
-							<img src="assets/images/dishes-1-1.jpg" alt="">
+							<img src="{% static 'images/dishes-1-1.jpg' %}" alt="">
 							<figcaption>
-								<a href="assets/images/dishes-1-1.jpg" class="popup-image" title="Wild Mushroom Bucatini"></a>
+								<a href="{% static 'images/dishes-1-1.jpg' %}" class="popup-image" title="Wild Mushroom Bucatini"></a>
 								<div class="caption-inner">
 									<div class="overlay-icon">
 										<span class="icon-magnifier"></span>
@@ -130,9 +271,9 @@
 				<div class="col-sm-4">
 					<div class="menu-classic">
 						<figure class="overlay">
-							<img src="assets/images/dishes-2-2.jpg" alt="">
+							<img src="{% static 'images/dishes-2-2.jpg' %}" alt="">
 							<figcaption>
-								<a href="assets/images/dishes-2-2.jpg" class="popup-image" title="Imported Oysters Grill"></a>
+								<a href="{% static 'images/dishes-2-2.jpg' %}" class="popup-image" title="Imported Oysters Grill"></a>
 								<div class="caption-inner">
 									<div class="overlay-icon">
 										<span class="icon-magnifier"></span>
@@ -158,9 +299,9 @@
 				<div class="col-sm-4">
 					<div class="menu-classic">
 						<figure class="overlay">
-							<img src="assets/images/dishes-3-3.jpg" alt="">
+							<img src="{% static 'images/dishes-3-3.jpg' %}" alt="">
 							<figcaption>
-								<a href="assets/images/dishes-3-3.jpg" class="popup-image" title="Lemon and Garlic Green Beans"></a>
+								<a href="{% static 'images/dishes-3-3.jpg' %}" class="popup-image" title="Lemon and Garlic Green Beans"></a>
 								<div class="caption-inner">
 									<div class="overlay-icon">
 										<span class="icon-magnifier"></span>
@@ -189,9 +330,9 @@
 				<div class="col-sm-4">
 					<div class="menu-classic">
 						<figure class="overlay">
-							<img src="assets/images/dishes-4-4.jpg" alt="">
+							<img src="{% static 'images/dishes-4-4.jpg' %}" alt="">
 							<figcaption>
-								<a href="assets/images/dishes-4-4.jpg" class="popup-image" title="Meatloaf with Black Pepper"></a>
+								<a href="{% static 'images/dishes-4-4.jpg' %}" class="popup-image" title="Meatloaf with Black Pepper"></a>
 								<div class="caption-inner">
 									<div class="overlay-icon">
 										<span class="icon-magnifier"></span>
@@ -216,9 +357,9 @@
 				<div class="col-sm-4">
 					<div class="menu-classic">
 						<figure class="overlay">
-							<img src="assets/images/dishes-5-5.jpg" alt="">
+							<img src="{% static 'images/dishes-5-5.jpg' %}" alt="">
 							<figcaption>
-								<a href="assets/images/dishes-5-5.jpg" class="popup-image" title="LambBeef Kofka Skewers"></a>
+								<a href="{% static 'images/dishes-5-5.jpg' %}" class="popup-image" title="LambBeef Kofka Skewers"></a>
 								<div class="caption-inner">
 									<div class="overlay-icon">
 										<span class="icon-magnifier"></span>
@@ -243,9 +384,9 @@
 				<div class="col-sm-4">
 					<div class="menu-classic">
 						<figure class="overlay">
-							<img src="assets/images/dishes-6-6.jpg" alt="">
+							<img src="{% static 'images/dishes-6-6.jpg' %}" alt="">
 							<figcaption>
-								<a href="assets/images/dishes-6-6.jpg" class="popup-image" title="Wild Mushroom Bucatini"></a>
+								<a href="{% static 'images/dishes-6-6.jpg' %}" class="popup-image" title="Wild Mushroom Bucatini"></a>
 								<div class="caption-inner">
 									<div class="overlay-icon">
 										<span class="icon-magnifier"></span>
@@ -272,7 +413,7 @@
 			<div class="row">
 				<div class="col-sm-6 col-sm-offset-3">
 					<div class="devider">
-						<img src="assets/images/divider-down.svg" alt="">
+						<img src="{% static 'images/divider-down.svg' %}" alt="">
 					</div>
 				</div>
 			</div><!-- .row -->
@@ -289,7 +430,7 @@
 
 			<div class="row">
 				<div class="col-sm-2 col-sm-offset-5 text-center long-down">
-					<img src="assets/images/divider-top.svg" alt="">
+					<img src="{% static 'images/divider-top.svg' %}" alt="">
 				</div>
 			</div><!-- .row -->
 
@@ -461,7 +602,7 @@
 			<div class="row">
 				<div class="col-sm-6 col-sm-offset-3">
 					<div class="devider">
-						<img src="assets/images/divider-down.svg" alt="">
+						<img src="{% static 'images/divider-down.svg' %}" alt="">
 					</div>
 				</div>
 			</div><!-- .row -->
@@ -640,7 +781,7 @@
 			<div class="row">
 				<div class="col-sm-6 col-sm-offset-3">
 					<div class="devider">
-						<img src="assets/images/divider-down.svg" alt="">
+						<img src="{% static 'images/divider-down.svg' %}" alt="">
 					</div>
 				</div>
 			</div><!-- .row -->
@@ -684,9 +825,9 @@
 					<div class="col-sm-4">
 						<div class="gallery-item">
 							<figure class="overlay">
-								<img src="assets/images/gallery-1.jpg" alt="">
+								<img src="{% static 'images/gallery-1.jpg' %}" alt="">
 								<figcaption>
-									<a href="assets/images/gallery-big-1.jpg" class="gallery" title="Title 1"></a>
+									<a href="{% static 'images/gallery-big-1.jpg' %]" class="gallery" title="Title 1"></a>
 									<div class="caption-inner">
 										<div class="overlay-icon">
 											<span class="icon-magnifier"></span>
@@ -700,9 +841,9 @@
 					<div class="col-sm-4">
 						<div class="gallery-item">
 							<figure class="overlay">
-								<img src="assets/images/gallery-2.jpg" alt="">
+								<img src="{% static 'images/gallery-2.jpg' %}" alt="">
 								<figcaption>
-									<a href="assets/images/gallery-big-2.jpg" class="gallery" title="Title 2"></a>
+									<a href="{% static 'images/gallery-big-2.jpg' %}" class="gallery" title="Title 2"></a>
 									<div class="caption-inner">
 										<div class="overlay-icon">
 											<span class="icon-magnifier"></span>
@@ -716,9 +857,9 @@
 					<div class="col-sm-4">
 						<div class="gallery-item">
 							<figure class="overlay">
-								<img src="assets/images/gallery-3.jpg" alt="">
+								<img src="{% static 'images/gallery-3.jpg' %}" alt="">
 								<figcaption>
-									<a href="assets/images/gallery-big-1.jpg" class="gallery" title="Title 3"></a>
+									<a href="images/gallery-big-1.jpg" class="gallery" title="Title 3"></a>
 									<div class="caption-inner">
 										<div class="overlay-icon">
 											<span class="icon-magnifier"></span>
@@ -736,9 +877,9 @@
 					<div class="col-sm-4">
 						<div class="gallery-item">
 							<figure class="overlay">
-								<img src="assets/images/gallery-4.jpg" alt="">
+								<img src="{% static 'images/gallery-4.jpg' %}" alt="">
 								<figcaption>
-									<a href="assets/images/gallery-big-2.jpg" class="gallery" title="Title 4"></a>
+									<a href="{% static 'images/gallery-big-2.jpg' %}" class="gallery" title="Title 4"></a>
 									<div class="caption-inner">
 										<div class="overlay-icon">
 											<span class="icon-magnifier"></span>
@@ -752,9 +893,9 @@
 					<div class="col-sm-4">
 						<div class="gallery-item">
 							<figure class="overlay">
-								<img src="assets/images/gallery-5.jpg" alt="">
+								<img src="{% static 'images/gallery-5.jpg' %}" alt="">
 								<figcaption>
-									<a href="assets/images/gallery-big-1.jpg" class="gallery" title="Title 5"></a>
+									<a href="{% static 'images/gallery-big-1.jpg' %}" class="gallery" title="Title 5"></a>
 									<div class="caption-inner">
 										<div class="overlay-icon">
 											<span class="icon-magnifier"></span>
@@ -768,9 +909,9 @@
 					<div class="col-sm-4">
 						<div class="gallery-item">
 							<figure class="overlay">
-								<img src="assets/images/gallery-6.jpg" alt="">
+								<img src="{% static 'images/gallery-6.jpg' %}" alt="">
 								<figcaption>
-									<a href="assets/images/gallery-big-2.jpg" class="gallery" title="Title 6"></a>
+									<a href="{% static 'images/gallery-big-2.jpg '%}" class="gallery" title="Title 6"></a>
 									<div class="caption-inner">
 										<div class="overlay-icon">
 											<span class="icon-magnifier"></span>
@@ -875,7 +1016,7 @@
 			<div class="row">
 				<div class="col-sm-6 col-sm-offset-3">
 					<div class="devider">
-						<img src="assets/images/divider-down.svg" alt="">
+						<img src="{% static 'images/divider-down.svg' %}" alt="">
 					</div>
 				</div>
 			</div><!-- .row -->
@@ -1002,7 +1143,37 @@
 		<a href="#totop"><i class="fa fa-angle-double-up"></i></a>
 	</div>
 
-	{% include "javascript.html" %}
+	<!-- Javascript files -->
+	<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+	<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 
+	<!-- Use for slideshow background -->
+	<script src="{% static 'js/jquery.backstretch.min.js' %}"></script>
+
+	<!-- Use for video background -->
+	<script src="{% static 'js/video.js' %}"></script>
+	<script src="{% static 'js/bigvideo.js' %}"></script>
+
+	<!-- Date and time picker -->
+	<script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+	<script src="{% static 'js/jquery.datepair.min.js' %}"></script>
+	<script src="{% static 'js/jquery.timepicker.min.js' %}"></script>
+	<script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
+
+	<!-- Google Maps -->
+	<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+	<script src="{% static 'js/gmaps.js'%}"></script>
+
+	<!-- Other -->
+	<script src="{% static 'js/jquery.matchHeight-min.js' %}"></script>
+	<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'js/twitterFetcher_min.js' %}"></script>
+	<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'js/jquery.fitvids.js' %}"></script>
+	<script src="{% static 'js/smoothscroll.js' %}"></script>
+	<script src="{% static 'js/wow.min.js' %}"></script>
+
+	<!-- Custom scripts -->
+	<script src="{% static 'js/custom.js' %}"></script>
 </body>
 </html>
