@@ -4,11 +4,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 
 from carts.views import CartView, ItemCountView, CheckoutView, CheckoutFinalView
-from orders.views import (
-                    AddressSelectFormView, 
-                    UserAddressCreateView, 
-                    OrderList, 
-                    OrderDetail)
+from orders.views import (AddressSelectFormView,UserAddressCreateView,OrderList,OrderDetail)
+
 
 urlpatterns = [
     # Examples:
@@ -20,6 +17,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^products/', include('products.urls')),
+    url(r'^posts/', include('posts.urls')),
     url(r'^categories/', include('products.urls_categories')),
     url(r'^orders/$', OrderList.as_view(), name='orders'),
     url(r'^orders/(?P<pk>\d+)/$', OrderDetail.as_view(), name='order_detail'),
@@ -29,6 +27,7 @@ urlpatterns = [
     url(r'^checkout/address/$', AddressSelectFormView.as_view(), name='order_address'),
     url(r'^checkout/address/add/$', UserAddressCreateView.as_view(), name='user_address_create'),
     url(r'^checkout/final/$', CheckoutFinalView.as_view(), name='checkout_final'),
+    url(r'^menu/', include('menu.urls'))
 
 ]
 
