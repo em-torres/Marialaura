@@ -2,161 +2,599 @@
 {% load crispy_forms_tags %}
 {% load staticfiles %}
 
-
-{% block head_title %}Welcome | {{ block.super }}{% endblock %}
+{% block head_titles %} Bienvenidos a | {{block.super }} {% endblock %}
 
 <style>
-{% block style %}
-.navbar-static-top {
-	margin-bottom: 0px !important;
-}
-
-.jumbotron {
-	background-color:#5ACDFF;
-	color: #000;
-	{% if featured_image.make_image_background %} 
-	background-image: url("{{ featured_image.image.url }}");
-	background-repeat: no-repeat;
-	background-color: #000;
-	background-size: cover;
-	background-position-y: -272px;
-	{% endif %}
-}
-
-{% endblock %}
+    {% block style %}
+    {% endblock %}
 </style>
-
-
-     
-{% block jumbotron %}
-
-	{% if featured_image %}
-		<div class="jumbotron" >
-		 <div class="container">
-			<div class="row">
-				<div class='col-sm-12 text-center {% if featured_image.text_right %} pull-right {% endif %}'>
-				<h1>{{ featured_image.product.title }}</h1>
-				<p>{{ featured_image.product.description }}</p>
-				<p>
-				<a class="btn btn-lg btn-primary" href="{{ featured_image.product.get_absolute_url }}" role="button">More Details </a>
-				</p>
-				</div>
-				{% if not featured_image.make_image_background %} 
-				<div class='col-sm-6' >
-					<img src="{{ featured_image.image.url }}" class='img-responsive' />
-		 		</div>
-		 		{% endif %}
-				</div>
-			</div>
-		 </div>
-
-
-	{% else %}
-	<div class="jumbotron">
-	 <div class="container">
-		<div class="row">
-			<div class='col-sm-6'>
-			<h1>Try Django 1.8</h1>
-			<p>The MVP Landing project is designed to get your project started. The goal is to help you launch as soon as possible with the least amount of investment using time or money. Join Us today.</p>
-			<p>
-			<a class="btn btn-lg btn-primary" href="" role="button">Join Us &raquo;</a>
-			</p>
-			</div>
-			<div class='col-sm-6' >
-				<iframe width="560" height="315" src="https://www.youtube.com/embed/2uLYO1LUf6Q" frameborder="0" allowfullscreen></iframe>
-
-	 		</div>
-			</div>
-		</div>
-	 </div>
-
-	 {% endif %}
-
-
-{% endblock %}
-
-
-
-
 {% block content %}
+	<section id="home" class="intro-module slideshow heightfull bg-dark-alfa-30">
 
-<div class='row'>
-<h3>Recommended Products</h3>
-{% include "products/products.html" with object_list=products col_class_set="col-sm-2" %}
+		<div class="intro">
 
-</div>
+			<div class="intro-slider">
+				<!-- Slide 1 -->
+				<div class="owl-item">
+					<h1 class="intro-title">Para una Alimentación de primera, nada como algo hecho en casa.</h1>
+				</div>
+				<!-- Slide 2 -->
+				<div class="owl-item">
+					<h1 class="intro-title">"Comida chatarra pero saludable".</h1>
+				</div>
+				<!-- Slide 3 -->
+				<div class="owl-item">
+					<h1 class="intro-title">Lo mejor de lo mejor para almorzar.</h1>
+				</div>
+			</div><!-- .intro-slider -->
 
-<div class='row'>
-<h3>Featured Products</h3>
-{% include "products/products.html" with object_list=products2 %}
+		</div><!-- .intro -->
 
-</div>
+		<div class="mouse-icon">
+			<div class="wheel"></div>
+		</div>
 
+	</section>
 
-<!-- 
- {% if request.user.is_authenticated %}
-<h1>You are logged in!</h1>
+	<!-- Home end -->
 
-	{% if queryset %}
-	<h2>Welcome Staff</h2>
-	<table class='table'>
-	{% for instance in queryset %}
-		<tr><td>{{ forloop.counter }}</td><td>{{ instance.email }}</td><td>{{ instance.full_name }}</td><td>{{ instance.timestamp|timesince }} ago</td></tr>
-		{% if instance.email == "abc@gmail.edu" %}
-		<tr><td>is equal</td></tr>
-		{% endif %}
-	{% endfor %}
-	</table>
+	<!-- About start -->
 
-	{% endif %}
+	<section id="about" class="module">
+		<div class="container">
 
- {% else %}
-<div class="row">
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<div class="module-header wow fadeInUp">
+						<h2 class="module-title">Descubre nuestra historia</h2>
+						<h3 class="module-subtitle">Bienvenidos a MariaLaura</h3>
+					</div>
+				</div>
+			</div><!-- .row -->
 
-  <div class="col-sm-3 pull-right">
-  	
-			<p class='lead text-align-center'>{{ title }}</p>
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2 text-center">
+					Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it.
+				</div>
+			</div><!-- .row -->
 
-			<form method='POST' action=''>{% csrf_token %}
-			{{ form|crispy }}
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<div class="devider">
+						<img src="{% static 'images/divider-down.svg' %}" alt="">
+					</div>
+				</div>
+			</div><!-- .row -->
 
-			<input class='btn btn-primary' type='submit' value='Sign Up' />
+		</div><!-- .container -->
+	</section>
 
-			</form>
-	</div>
+	<!-- About end -->
 
-	<div class='col-sm-3'>
-<p class='lead text-align-center'>Django &amp; Bootstrap</p>
-			<img src='{% static "img/marketing1.jpg" %}' class='img-responsive' />
-</div>
+	<!-- Callout section start -->
 
-<div class='col-sm-3'>
-<p class='lead text-align-center'>Created for Starters 
-<br/>
-<span class='fa-stack fa-lg fa-5x'>
-<i class='fa fa-comment-o fa-stack-2x'></i>
-<i style='color:yellow;' class="fa fa-bolt fa-stack-1x"></i>
+	<section id="callout-one" class="callout">
+		<div class="container">
 
-</span>
-</p>
+			<div class="row">
+				<div class="col-sm-2 col-sm-offset-5 text-center long-down">
+					<img src="{% static 'images/divider-top.svg' %}" alt="">
+				</div>
+			</div><!-- .row -->
 
-</div>
+			<div class="row">
+				<div class="col-sm-10 col-sm-offset-1">
+					<h2 class="callout-text">Porque solo comer Carnes y Vegetales para estar Fit, si podemos comer lo quieras.</h2>
+				</div>
+			</div><!-- .row -->
 
-<div class='col-sm-3'>
-<p class='lead text-align-center'>Always Open Source <br/><br/>
+		</div><!-- .container -->
+	</section>
 
-<span class="fa-stack fa-lg fa-5x">
-<i class="fa fa-circle-o-notch fa-stack-2x"></i>
+	<!-- Callout section end -->
 
-  <i class="fa fa-github fa-stack-1x"></i>
-</span>
-</p>
+	<!-- Services start -->
 
+	<section id="services" class="module">
+		<div class="container">
 
-</div>
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<div class="module-header wow fadeInUp">
+						<h2 class="module-title">Más sobre nosotros</h2>
+						<h3 class="module-subtitle">Servicios</h3>
+					</div>
+				</div>
+			</div><!-- .row -->
 
+			<div class="row">
 
-</div>
-{% endif %} -->
+				<div class="col-sm-3">
+					<div class="iconbox">
+						<div class="iconbox-body equal-height">
+							<div class="iconbox-icon"><span class="icon-calendar"></span></div>
+							<div class="iconbox-text">
+								<h3 class="iconbox-title">Ordenes Semanales de Almuerzos</h3>
+								<div class="iconbox-desc">
+									Ordena tu almuerzo de la semana con nosotros.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<div class="iconbox ">
+						<div class="iconbox-body equal-height">
+							<div class="iconbox-icon"><span class=" fa fa-truck fa-1x"></span></div>
+							<div class="iconbox-text">
+								<h3 class="iconbox-title">Envío de Almuerzos</h3>
+								<div class="iconbox-desc">
+									Hacemos entrega de su almuerzo o ordenes especiales que realices para tu casa, trabajo, actividad o evento.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<div class="iconbox">
+						<div class="iconbox-body equal-height">
+							<div class="iconbox-icon"><span class="fa fa-child fa-x3"></span></div>
+							<div class="iconbox-text">
+								<h3 class="iconbox-title">Planes de Entrenamientos</h3>
+								<div class="iconbox-desc">
+									Obtén un plan de entrenamiento para así tener una mejor físico y una alimentación más saludable sin cambiar tus costumbre.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<div class="iconbox">
+						<div class="iconbox-body equal-height">
+							<div class="iconbox-icon"><span class="icon-like"></span></div>
+							<div class="iconbox-text">
+								<h3 class="iconbox-title">Charlas y cursos Cocina</h3>
+								<div class="iconbox-desc">
+                                    Eventos con el fin de culturizar y  mejorar el conocimiento en la cocina y la alimentación.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div><!-- .row -->
+
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2 text-center long-up">
+					* Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it.
+				</div>
+			</div><!-- .row -->
+
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<div class="devider">
+						<img src="{% static 'images/divider-down.svg' %}" alt="">
+					</div>
+				</div>
+			</div><!-- .row -->
+
+		</div><!-- .container -->
+	</section>
+
+	<!-- Services end -->
+
+	<!-- Callout section start -->
+
+	<section id="callout-two" class="callout">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-sm-2 col-sm-offset-5 text-center long-down">
+					<img src="{% static 'images/divider-top.svg' %}" alt="">
+				</div>
+			</div><!-- .row -->
+
+			<div class="row">
+				<div class="col-sm-12">
+					<h2 class="callout-text">Comida Chatarra pero Saludable.</h2>
+				</div>
+			</div><!-- .row -->
+
+		</div><!-- .container -->
+	</section>
+
+	<!-- Callout section end -->
+
+	<!-- Popular start -->
+
+	<section id="popular" class="module">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<div class="module-header wow fadeInUp">
+						<h2 class="module-title">Popular Dishes</h2>
+						<h3 class="module-subtitle">Our most popular menu</h3>
+					</div>
+				</div>
+			</div><!-- .row -->
+			<!-----------------------django data-------------------------------->
+            {% for object in object_list %}
+            {% if object.menu_week.start_date <= date  and object.menu_week.end_date > date %}
+			 <p>Ordene antes de {{object.menu_week.start_date}}</p>
+            {% include "menu/menu_thumbnail.html" with object=object %}
+            {% endif %}
+
+            {% endfor %}
+			<!------------------------------------------------------->
+		</div><!-- .container -->
+	</section>
+
+	<!-- Popular end -->
+
+	<!-- Callout section start -->
+
+	<section id="callout-three" class="callout">
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-sm-10 col-sm-offset-1">
+					<div class="testimonials-slider">
+
+						<!-- Slide 1 -->
+						<div class="owl-item">
+							<blockquote>Sea food and the best view. Nothing in excess.</blockquote>
+							<div class="testimonial-author">
+								<div class="row">
+									<div class="col-sm-6 testimonial-avatar">
+										<img src="https://s3.amazonaws.com/uifaces/faces/twitter/soffes/128.jpg" alt="">
+									</div>
+									<div class="col-sm-6 testimonial-info">
+										<h4>Jack Woods</h4>
+										<div class="stars">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star star-off"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Slide 2 -->
+						<div class="owl-item">
+							<blockquote>I love this place!</blockquote>
+							<div class="testimonial-author">
+								<div class="row">
+									<div class="col-sm-6 testimonial-avatar">
+										<img src="https://s3.amazonaws.com/uifaces/faces/twitter/walterstephanie/128.jpg" alt="">
+									</div>
+									<div class="col-sm-6 testimonial-info">
+										<h4>Andy River</h4>
+										<div class="stars">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Slide 3 -->
+						<div class="owl-item">
+							<blockquote>Perhaps the most romantic place in the city.</blockquote>
+							<div class="testimonial-author">
+								<div class="row">
+									<div class="col-sm-6 testimonial-avatar">
+										<img src="https://s3.amazonaws.com/uifaces/faces/twitter/dannpetty/128.jpg" alt="">
+									</div>
+									<div class="col-sm-6 testimonial-info">
+										<h4>Jimmy Stone</h4>
+										<div class="stars">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star star-off"></i>
+											<i class="fa fa-star star-off"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div><!-- .testimonials-slider -->
+				</div><!-- .col-sm-10 -->
+
+			</div><!-- .row -->
+
+		</div><!-- .container -->
+	</section>
+
+	<!-- Callout section end -->
+
+    <!-- Dishes start -->
+
+    <section id="dishes" class="module">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<div class="module-header wow fadeInUp">
+						<h2 class="module-title">Chef Recommended</h2>
+						<h3 class="module-subtitle">Signatures dishes recommend by our chef</h3>
+					</div>
+				</div>
+			</div><!-- .row -->
+
+			<div class="row">
+
+				<div class="col-sm-4">
+					<div class="menu-classic">
+						<figure class="overlay">
+							<img src="{% static 'images/dishes-1-1.jpg' %}" alt="">
+							<figcaption>
+								<a href="{% static 'images/dishes-1-1.jpg' %}" class="popup-image" title="Wild Mushroom Bucatini"></a>
+								<div class="caption-inner">
+									<div class="overlay-icon">
+										<span class="icon-magnifier"></span>
+									</div>
+								</div>
+							</figcaption>
+						</figure>
+						<div class="menu">
+							<div class="row">
+								<div class="col-sm-9">
+									<h4 class="menu-title">Wild Mushroom Bucatini</h4>
+									<div class="menu-detail">Mushroom / Veggie / White Sources</div>
+								</div>
+								<div class="col-sm-3 menu-price-detail">
+									<h4 class="menu-price">$12</h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<div class="menu-classic">
+						<figure class="overlay">
+							<img src="{% static 'images/dishes-2-2.jpg' %}" alt="">
+							<figcaption>
+								<a href="{% static 'images/dishes-2-2.jpg' %}" class="popup-image" title="Imported Oysters Grill"></a>
+								<div class="caption-inner">
+									<div class="overlay-icon">
+										<span class="icon-magnifier"></span>
+									</div>
+								</div>
+							</figcaption>
+						</figure>
+						<div class="menu">
+							<div class="row">
+								<div class="col-sm-9">
+									<h4 class="menu-title">Imported Oysters Grill (5 Pieces)</h4>
+									<div class="menu-detail">Oysters / Veggie / Ginger</div>
+								</div>
+								<div class="col-sm-3 menu-price-detail">
+									<h4 class="menu-price">$10.5</h4>
+									<span class="menu-label">New</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<div class="menu-classic">
+						<figure class="overlay">
+							<img src="{% static 'images/dishes-3-3.jpg' %}" alt="">
+							<figcaption>
+								<a href="{% static 'images/dishes-3-3.jpg' %}" class="popup-image" title="Lemon and Garlic Green Beans"></a>
+								<div class="caption-inner">
+									<div class="overlay-icon">
+										<span class="icon-magnifier"></span>
+									</div>
+								</div>
+							</figcaption>
+						</figure>
+						<div class="menu">
+							<div class="row">
+								<div class="col-sm-9">
+									<h4 class="menu-title">Lemon and Garlic Green Beans</h4>
+									<div class="menu-detail">Pepper / Chicken / Honey</div>
+								</div>
+								<div class="col-sm-3 menu-price-detail">
+									<h4 class="menu-price">$8.5</h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div><!-- .row -->
+
+			<div class="row">
+
+				<div class="col-sm-4">
+					<div class="menu-classic">
+						<figure class="overlay">
+							<img src="{% static 'images/dishes-4-4.jpg' %}" alt="">
+							<figcaption>
+								<a href="{% static 'images/dishes-4-4.jpg' %}" class="popup-image" title="Meatloaf with Black Pepper"></a>
+								<div class="caption-inner">
+									<div class="overlay-icon">
+										<span class="icon-magnifier"></span>
+									</div>
+								</div>
+							</figcaption>
+						</figure>
+						<div class="menu">
+							<div class="row">
+								<div class="col-sm-9">
+									<h4 class="menu-title">Meatloaf with Black Pepper</h4>
+									<div class="menu-detail">Pepper / Chicken / Honey</div>
+								</div>
+								<div class="col-sm-3 menu-price-detail">
+									<h4 class="menu-price">$14.5</h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<div class="menu-classic">
+						<figure class="overlay">
+							<img src="{% static 'images/dishes-5-5.jpg' %}" alt="">
+							<figcaption>
+								<a href="{% static 'images/dishes-5-5.jpg' %}" class="popup-image" title="LambBeef Kofka Skewers"></a>
+								<div class="caption-inner">
+									<div class="overlay-icon">
+										<span class="icon-magnifier"></span>
+									</div>
+								</div>
+							</figcaption>
+						</figure>
+						<div class="menu">
+							<div class="row">
+								<div class="col-sm-9">
+									<h4 class="menu-title">LambBeef Kofka Skewers</h4>
+									<div class="menu-detail">Lemon / Garlic / Beans</div>
+								</div>
+								<div class="col-sm-3 menu-price-detail">
+									<h4 class="menu-price">$16</h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<div class="menu-classic">
+						<figure class="overlay">
+							<img src="{% static 'images/dishes-6-6.jpg' %}" alt="">
+							<figcaption>
+								<a href="{% static 'images/dishes-6-6.jpg' %}" class="popup-image" title="Wild Mushroom Bucatini"></a>
+								<div class="caption-inner">
+									<div class="overlay-icon">
+										<span class="icon-magnifier"></span>
+									</div>
+								</div>
+							</figcaption>
+						</figure>
+						<div class="menu">
+							<div class="row">
+								<div class="col-sm-9">
+									<h4 class="menu-title">Wild Mushroom Bucatini</h4>
+									<div class="menu-detail">Lamb / Wine / Butter</div>
+								</div>
+								<div class="col-sm-3 menu-price-detail">
+									<h4 class="menu-price">$11</h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div><!-- .row -->
+
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<div class="devider">
+						<img src="{% static 'images/divider-down.svg' %}" alt="">
+					</div>
+				</div>
+			</div><!-- .row -->
+
+		</div><!-- .container -->
+	</section>
+
+	 <!--Dishes end-->
+        {% block gallery %}
+         <!-- feature gallery -->
+        {% endblock %}
+
+        {% block reservation %}
+        <!-- feature reservation -->
+        {% endblock %}
+
+	<section id="subscribe" class="module module-dark">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<div class="module-header wow fadeInUp">
+						<h2 class="module-title">Síguenos</h2>
+						<h2 class="module-title">en</h2>
+						<!--<h3 class="module-subtitle">Subscribe to our newsletter</h3>-->
+					</div>
+				</div>
+			</div><!-- .row -->
+
+			<!--<div class="row">-->
+
+				<!--<div class="col-sm-6 col-sm-offset-3">-->
+					<!--<form id="subscription-form" role="form" novalidate>-->
+						<!--<div class="row">-->
+
+							<!--<div class="col-sm-6 form-group">-->
+								<!--<label class="sr-only" for="sname">Name</label>-->
+								<!--<input type="text" id="sname" class="form-control" name="sname" placeholder="Name" required data-validation-required-message="Please enter your name.">-->
+								<!--<p class="help-block text-danger"></p>-->
+							<!--</div>-->
+
+							<!--<div class="col-sm-6 form-group">-->
+								<!--<label class="sr-only" for="ssurname">Surname</label>-->
+								<!--<input type="text" id="ssurname" class="form-control" name="ssurname" placeholder="Surname" required data-validation-required-message="Please enter your surname.">-->
+								<!--<p class="help-block text-danger"></p>-->
+							<!--</div>-->
+
+							<!--<div class="col-sm-12 form-group">-->
+								<!--<label class="sr-only" for="semail">Your Email</label>-->
+								<!--<input type="email" id="semail" name="semail" class="form-control" placeholder="Your Email" required data-validation-required-message="Please enter your email address.">-->
+								<!--<p class="help-block text-danger"></p>-->
+							<!--</div>-->
+
+							<!--<div class="col-sm-12 text-center">-->
+								<!--<button type="submit" class="btn btn-default btn-custom-2">Subscribe</button>-->
+							<!--</div>-->
+
+						<!--</div>&lt;!&ndash; .row &ndash;&gt;-->
+					<!--</form>-->
+					<!--&lt;!&ndash; Ajax response &ndash;&gt;-->
+					<!--<div id="subscription-response" class="ajax-response"></div>-->
+				<!--</div>-->
+
+			<!--</div>&lt;!&ndash; .row &ndash;&gt;-->
+
+			<div class="row">
+				<div class="col-md-12 text-center long-up">
+					<ul class="social-links">
+						<li><a href="#" class="wow fadeInUp"><i class="fa fa-facebook fa-3x"></i></a></li>
+						<li><a href="#" class="wow fadeInUp" data-wow-delay=".1s"><i class="fa fa-twitter fa-3x"></i></a></li>
+						<li><a href="#" class="wow fadeInUp" data-wow-delay=".2s"><i class="fa fa-google-plus fa-3x"></i></a></li>
+						<li><a href="#" class="wow fadeInUp" data-wow-delay=".3s"><i class="fa fa-linkedin fa-3x"></i></a></li>
+						<li><a href="#" class="wow fadeInUp" data-wow-delay=".4s"><i class="fa fa-pinterest fa-3x"></i></a></li>
+						<li><a href="#" class="wow fadeInUp" data-wow-delay=".5s"><i class="fa fa-envelope fa-3x"></i></a></li>
+						<li><a href="#" class="wow fadeInUp" data-wow-delay=".6s"><i class="fa fa-instagram fa-3x"></i></a></li>
+						<li><a href="#" class="wow fadeInUp" data-wow-delay=".7s"><i class="fa fa-snapchat-ghost fa-3x"></i></a></li>
+					</ul>
+				</div>
+			</div><!-- .row -->
+
+		</div><!-- .container -->
+	</section>
+
+	<!-- Subscribe end -->
 
 {% endblock %}
+
+

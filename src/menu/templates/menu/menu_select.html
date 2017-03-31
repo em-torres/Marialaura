@@ -5,12 +5,11 @@
 				<div class="menu">
 					<div class="row">
 						<div class="col-sm-8">
-							<h4 class="menu-title">{{object.mo1}}</h4>
-
+							<h4 class="menu-title">{{object.mo1}} <input type="checkbox" name="lunes" value="{{object.mo1.id}}"></h4>
 							<div class="menu-detail">
 							{% if object.mo1.variation_set.count > 1 %}
 								{% for var_obj in object.mo1.variation_set.all %}
-									{{var_obj}} /
+								  {{var_obj}} /
 								{% endfor %}
 
 							{% else  %}
@@ -19,7 +18,7 @@
 							</div>
 						</div>
 						<div class="col-sm-4 menu-price-detail">
-							<h4 class="menu-price">Lunes <input type="checkbox" name="day" value="Lunes"></h4>
+							<h4 class="menu-price">Lunes</h4>
 
 						</div>
 					</div>
@@ -28,7 +27,7 @@
 				<div class="menu">
 					<div class="row">
 						<div class="col-sm-8">
-							<h4 class="menu-title">{{object.tu1}}</h4>
+							<h4 class="menu-title">{{object.tu1}} <input type="checkbox" name="martes" value="{{object.tu1.id}}"></h4>
 
 							<div class="menu-detail">
 							{% if object.tu1.variation_set.count > 1 %}
@@ -42,7 +41,7 @@
 							</div>
 						</div>
 						<div class="col-sm-4 menu-price-detail">
-							<h4 class="menu-price">Martes <input type="checkbox" name="dish" value="Martes"></h4>
+							<h4 class="menu-price">Martes</h4>
 
 						</div>
 					</div>
@@ -51,7 +50,7 @@
 				<div class="menu">
 					<div class="row">
 						<div class="col-sm-8">
-							<h4 class="menu-title">{{object.we1}}</h4>
+							<h4 class="menu-title">{{object.we1}} <input type="checkbox" name="miercoles" value="{{object.we1.id}}"></h4>
 
 							<div class="menu-detail">
 							{% if object.we1.variation_set.count > 1 %}
@@ -65,7 +64,7 @@
 							</div>
 						</div>
 						<div class="col-sm-4 menu-price-detail">
-							<h4 class="menu-price">Miercoles <input type="checkbox" name="day" value="Miercoles"></h4>
+							<h4 class="menu-price">Miercoles</h4>
 
 						</div>
 					</div>
@@ -74,7 +73,7 @@
 				<div class="menu">
 					<div class="row">
 						<div class="col-sm-8">
-							<h4 class="menu-title">{{object.th1}}</h4>
+							<h4 class="menu-title">{{object.th1}} <input type="checkbox" name="jueves" value="{{object.th1.id}}"></h4>
 
 							<div class="menu-detail">
 							{% if object.th1.variation_set.count > 1 %}
@@ -88,7 +87,7 @@
 							</div>
 						</div>
 						<div class="col-sm-4 menu-price-detail">
-							<h4 class="menu-price">Jueves <input type="checkbox" name="day" value="Jueves"></h4>
+							<h4 class="menu-price">Jueves</h4>
 
 						</div>
 					</div>
@@ -97,7 +96,7 @@
 				<div class="menu">
 					<div class="row">
 						<div class="col-sm-8">
-							<h4 class="menu-title">{{object.fr1}}</h4>
+							<h4 class="menu-title">{{object.fr1}}<input type="checkbox" name="viernes" value="{{object.fr1.id}}"></h4>
 
 							<div class="menu-detail">
 							{% if object.fr1.variation_set.count > 1 %}
@@ -111,7 +110,7 @@
 							</div>
 						</div>
 						<div class="col-sm-4 menu-price-detail">
-							<h4 class="menu-price">Viernes <input type="checkbox" name="day" value="Viernes"></h4>
+							<h4 class="menu-price">Viernes</h4>
 
 						</div>
 					</div>
@@ -126,7 +125,7 @@
 				<div class="menu">
 					<div class="row">
 						<div class="col-sm-8">
-							<h4 class="menu-title">{{object.mo2}}</h4>
+							<h4 class="menu-title">{{object.mo2}}<input type="checkbox" name="lunes" value="{{object.mo2.id}}"></h4>
 
 							<div class="menu-detail">
 							{% if object.mo2.variation_set.count > 1 %}
@@ -140,7 +139,7 @@
 							</div>
 						</div>
 						<div class="col-sm-4 menu-price-detail">
-							<h4 class="menu-price">Lunes <input type="checkbox" name="day" value="Lunes"></h4>
+							<h4 class="menu-price">Lunes</h4>
 
 						</div>
 					</div>
@@ -149,7 +148,7 @@
 				<div class="menu">
 					<div class="row">
 						<div class="col-sm-8">
-							<h4 class="menu-title">{{object.tu2}}</h4>
+							<h4 class="menu-title">{{object.tu2}} <input type="checkbox" name="martes" value="{{object.tu2.id}}"></h4>
 
 							<div class="menu-detail">
 							{% if object.tu2.variation_set.count > 1 %}
@@ -163,7 +162,7 @@
 							</div>
 						</div>
 						<div class="col-sm-4 menu-price-detail">
-							<h4 class="menu-price">Martes <input type="checkbox" name="day" value="Martes"></h4>
+							<h4 class="menu-price">Martes</h4>
 
 						</div>
 					</div>
@@ -172,7 +171,7 @@
 				<div class="menu">
 					<div class="row">
 						<div class="col-sm-8">
-							<h4 class="menu-title">{{object.we2}}</h4>
+							<h4 class="menu-title">{{object.we2}} <input type="checkbox" name="miercoles" value="{{object.we2.id}}"></h4>
 
 							<div class="menu-detail">
 							{% if object.we2.variation_set.count > 1 %}
@@ -186,7 +185,7 @@
 							</div>
 						</div>
 						<div class="col-sm-4 menu-price-detail">
-							<h4 class="menu-price">Miercoles <input type="checkbox" name="day" value="Miercoles"></h4>
+							<h4 class="menu-price">Miercoles</h4>
 
 						</div>
 					</div>
@@ -195,7 +194,7 @@
 				<div class="menu">
 					<div class="row">
 						<div class="col-sm-8">
-							<h4 class="menu-title">{{object.th2}}</h4>
+							<h4 class="menu-title">{{object.th2}}<input type="checkbox" name="jueves" value="{{object.th2.id}}"></h4>
 
 							<div class="menu-detail">
 							{% if object.th2.variation_set.count > 1 %}
@@ -209,7 +208,7 @@
 							</div>
 						</div>
 						<div class="col-sm-4 menu-price-detail">
-							<h4 class="menu-price">Jueves <input type="checkbox" name="day" value="Jueves"></h4>
+							<h4 class="menu-price">Jueves</h4>
 
 						</div>
 					</div>
@@ -218,7 +217,7 @@
 				<div class="menu">
 					<div class="row">
 						<div class="col-sm-8">
-							<h4 class="menu-title">{{object.fr2}}</h4>
+							<h4 class="menu-title">{{object.fr2}} <input type="checkbox" name="viernes" value="{{object.fr2.id}}"></h4>
 
 							<div class="menu-detail">
 							{% if object.fr2.variation_set.count > 1 %}
@@ -232,11 +231,17 @@
 							</div>
 						</div>
 						<div class="col-sm-4 menu-price-detail">
-							<h4 class="menu-price">Viernes <input type="checkbox" name="day" value="Viernes"></h4>
+							<h4 class="menu-price">Viernes</h4>
 
 						</div>
 					</div>
 				</div>
 
 			</div><!-- .col-sm-6 -->
+	</div><!-- .row -->
+
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3 long-up text-center">
+			<a href="" class="btn btn-custom-1">Ordenar ya </a>
+		</div>
 	</div><!-- .row -->
