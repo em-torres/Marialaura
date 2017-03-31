@@ -137,6 +137,7 @@ STATICFILES_DIRS = (
     #'C:\Users\Fatima\Google Drive\django\ecommerce-2\src\static_in_pro',
 )
 
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_in_env", "media_root")
 
