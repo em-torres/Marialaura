@@ -68,62 +68,63 @@ $(".item-qty").change(function(){
 </script>
 
 {% block content %}
+<section class="module">
+		<div class="container">
+
+		<div class='row main-content'>
+
+		{% if object.cartitem_set.count < 1 %}
+
+		{% include "carts/empty_cart.html" %}
+		{% else %}
+
+		<div class='col-sm-8 col-sm-offset-2'>
+
+		<h1>Your cart</h1>
+		<table class='table'>
+		<tr>
+			<td>Lunes</td>
+			<td>Martes</td>
+			<td>Miercoles</td>
+			<td>Jueves</td>
+			<td>Viernes</td>
+
+		</tr>
+
+		{% for item in object.cartitem_set.all %}
+
+		<tr id='item-{{ item.item.id }}'>
+			<td> {{item.mo}} </td>
+			<td> {{item.tu}} </td>
+			<td> {{item.we}} </td>
+			<td> {{item.tu}} </td>
+			<td> {{item.fr}} </td>
+		</tr>
+		{% endfor %}
+
+		<tr>
+			<td  colspan='4' class='text-right'>Subtotal: <span id='subtotal'>{{ object.subtotal }}</span></td>
+		</tr>
+
+		<tr>
+			<td colspan='4' class='text-right'>Tax (Estimated): <span id='taxtotal'>{{ object.tax_total }}</span></td>
+		</tr>
+
+		<tr>
+			<td colspan='4' class='text-right'>Total: <span id='carttotal'>{{ object.total }}</span></td>
+		</tr>
+
+		<tr>
+			<td colspan='4' class='text-right'><a class='btn btn-warning' href="{% url 'checkout' %}">Checkout </a></td>
+		</tr>
+
+		</table>
 
 
-<div class='row main-content'>
+		</div>
+		{% endif %}
 
-{% if object.cartitem_set.count < 1 %}
-
-{% include "carts/empty_cart.html" %}
-{% else %}
-
-<div class='col-sm-8 col-sm-offset-2'>
-
-<h1>Your cart</h1>
-<table class='table'> 
-<tr>
-	<td>Dia</td>
-	<td>Cant.</td>
-	<td>Plato</td>
-	<!--<td>Precio</td>-->
-	<td>Edit</td>
-</tr>
-
-{% for item in object.cartitem_set.all %}
-
-<tr id='item-{{ item.item.id }}'>
-<td> {{item.day}} </td>
-<td><form action="." method="GET" ><input type='hidden' name='item' value='{{ item.item.id }}' /><input type='number' style="width: 50px" class='item-qty' name='qty' value='{{ item.quantity }}' /><input type='submit' class='btn-update btn btn-link' value='Update item' style='display:none;'/></form></td>
-<td>{{ item.item.get_title }}</td>
-<!--<td id='item-line-total-{{ item.item.id }}'>{{ item.line_item_total }}</td>-->
-<td class='text-right' ><a href='{{ item.remove }}'>X</a></td>
-</tr>
-
-{% endfor %}
-
-
-<tr>
-	<td  colspan='4' class='text-right'>Subtotal: <span id='subtotal'>{{ object.subtotal }}</span></td>
-</tr>
-
-<tr>
-	<td colspan='4' class='text-right'>Tax (Estimated): <span id='taxtotal'>{{ object.tax_total }}</span></td>
-</tr>
-
-<tr>
-	<td colspan='4' class='text-right'>Total: <span id='carttotal'>{{ object.total }}</span></td>
-</tr>
-
-
-<tr>
-	<td colspan='4' class='text-right'><a class='btn btn-warning' href="{% url 'checkout' %}">Checkout </a></td>
-</tr>
-
-</table>
-
-
-</div>
-{% endif %}
-
-</div>
+		</div>
+			</div>
+	</section>
 {% endblock %}

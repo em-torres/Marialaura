@@ -1,15 +1,17 @@
 <!-- Lado izquierdo y primeras opciones -->
+
+<form method="GET" action="{% url 'cart' %}">
 <div class="row">
 			<div class="col-sm-6">
 
 				<div class="menu">
 					<div class="row">
 						<div class="col-sm-8">
-							<h4 class="menu-title">{{object.mo1}} <input type="checkbox" name="lunes" value="{{object.mo1.id}}"></h4>
+							<h4 class="menu-title">{{object.mo1}}</h4>
 							<div class="menu-detail">
 							{% if object.mo1.variation_set.count > 1 %}
 								{% for var_obj in object.mo1.variation_set.all %}
-								  {{var_obj}} /
+								 <input type="radio" name="lunes" value="{{var_obj}}">{{var_obj}}/
 								{% endfor %}
 
 							{% else  %}
@@ -27,12 +29,12 @@
 				<div class="menu">
 					<div class="row">
 						<div class="col-sm-8">
-							<h4 class="menu-title">{{object.tu1}} <input type="checkbox" name="martes" value="{{object.tu1.id}}"></h4>
+							<h4 class="menu-title">{{object.tu1}}</h4>
 
 							<div class="menu-detail">
 							{% if object.tu1.variation_set.count > 1 %}
 								{% for var_obj in object.tu1.variation_set.all %}
-									{{var_obj}} /
+									<input type="radio" name="martes" value="{{var_obj}}">{{var_obj}}/
 								{% endfor %}
 
 							{% else  %}
@@ -50,12 +52,12 @@
 				<div class="menu">
 					<div class="row">
 						<div class="col-sm-8">
-							<h4 class="menu-title">{{object.we1}} <input type="checkbox" name="miercoles" value="{{object.we1.id}}"></h4>
+							<h4 class="menu-title">{{object.we1}}</h4>
 
 							<div class="menu-detail">
 							{% if object.we1.variation_set.count > 1 %}
 								{% for var_obj in object.we1.variation_set.all %}
-									{{var_obj}} /
+									<input type="radio" name="miercoles" value="{{var_obj}}">{{var_obj}}/
 								{% endfor %}
 
 							{% else  %}
@@ -73,12 +75,12 @@
 				<div class="menu">
 					<div class="row">
 						<div class="col-sm-8">
-							<h4 class="menu-title">{{object.th1}} <input type="checkbox" name="jueves" value="{{object.th1.id}}"></h4>
+							<h4 class="menu-title">{{object.th1}}</h4>
 
 							<div class="menu-detail">
 							{% if object.th1.variation_set.count > 1 %}
-								{% for var_obj in object.tu1.variation_set.all %}
-									{{var_obj}} /
+								{% for var_obj in object.th1.variation_set.all %}
+									<input type="radio" name="jueves" value="{{var_obj}}">{{var_obj}}/
 								{% endfor %}
 
 							{% else  %}
@@ -96,12 +98,12 @@
 				<div class="menu">
 					<div class="row">
 						<div class="col-sm-8">
-							<h4 class="menu-title">{{object.fr1}}<input type="checkbox" name="viernes" value="{{object.fr1.id}}"></h4>
+							<h4 class="menu-title">{{object.fr1}}</h4>
 
 							<div class="menu-detail">
 							{% if object.fr1.variation_set.count > 1 %}
-								{% for var_obj in object.tu1.variation_set.all %}
-									{{var_obj}} /
+								{% for var_obj in object.fr1.variation_set.all %}
+									<input type="radio" name="viernes" value="{{var_obj}}">{{var_obj}}/
 								{% endfor %}
 
 							{% else  %}
@@ -125,12 +127,12 @@
 				<div class="menu">
 					<div class="row">
 						<div class="col-sm-8">
-							<h4 class="menu-title">{{object.mo2}}<input type="checkbox" name="lunes" value="{{object.mo2.id}}"></h4>
+							<h4 class="menu-title">{{object.mo2}}</h4>
 
 							<div class="menu-detail">
 							{% if object.mo2.variation_set.count > 1 %}
-								{% for var_obj in object.mo1.variation_set.all %}
-									{{var_obj}} /
+								{% for var_obj in object.mo2.variation_set.all %}
+									<input type="radio" name="lunes" value="{{var_obj}}">{{var_obj}}/
 								{% endfor %}
 
 							{% else  %}
@@ -148,12 +150,12 @@
 				<div class="menu">
 					<div class="row">
 						<div class="col-sm-8">
-							<h4 class="menu-title">{{object.tu2}} <input type="checkbox" name="martes" value="{{object.tu2.id}}"></h4>
+							<h4 class="menu-title">{{object.tu2}}</h4>
 
 							<div class="menu-detail">
 							{% if object.tu2.variation_set.count > 1 %}
 								{% for var_obj in object.tu2.variation_set.all %}
-									{{var_obj}} /
+									<input type="radio" name="martes" value="{{var_obj}}">{{var_obj}}/
 								{% endfor %}
 
 							{% else  %}
@@ -171,12 +173,12 @@
 				<div class="menu">
 					<div class="row">
 						<div class="col-sm-8">
-							<h4 class="menu-title">{{object.we2}} <input type="checkbox" name="miercoles" value="{{object.we2.id}}"></h4>
+							<h4 class="menu-title">{{object.we2}} </h4>
 
 							<div class="menu-detail">
 							{% if object.we2.variation_set.count > 1 %}
 								{% for var_obj in object.we2.variation_set.all %}
-									{{var_obj}} /
+									<input type="radio" name="miercoles" value="{{var_obj}}">{{var_obj}}/
 								{% endfor %}
 
 							{% else  %}
@@ -194,12 +196,12 @@
 				<div class="menu">
 					<div class="row">
 						<div class="col-sm-8">
-							<h4 class="menu-title">{{object.th2}}<input type="checkbox" name="jueves" value="{{object.th2.id}}"></h4>
+							<h4 class="menu-title">{{object.th2}}</h4>
 
 							<div class="menu-detail">
 							{% if object.th2.variation_set.count > 1 %}
 								{% for var_obj in object.th2.variation_set.all %}
-									{{var_obj}} /
+									<input type="radio" name="jueves" value="{{var_obj}}">{{var_obj}}/
 								{% endfor %}
 
 							{% else  %}
@@ -217,12 +219,12 @@
 				<div class="menu">
 					<div class="row">
 						<div class="col-sm-8">
-							<h4 class="menu-title">{{object.fr2}} <input type="checkbox" name="viernes" value="{{object.fr2.id}}"></h4>
+							<h4 class="menu-title">{{object.fr2}}</h4>
 
 							<div class="menu-detail">
 							{% if object.fr2.variation_set.count > 1 %}
 								{% for var_obj in object.fr2.variation_set.all %}
-									{{var_obj}} /
+									<input type="radio" name="viernes" value="{{var_obj}}">{{var_obj}}
 								{% endfor %}
 
 							{% else  %}
@@ -242,6 +244,8 @@
 
 	<div class="row">
 		<div class="col-sm-6 col-sm-offset-3 long-up text-center">
-			<a href="" class="btn btn-custom-1">Ordenar ya </a>
+			<input type="hidden" name="item" value="{{object.menu_week.id}}">
+			<input type="submit" class="btn btn-custom-1" value="Ordenar ya">
 		</div>
 	</div><!-- .row -->
+</form>

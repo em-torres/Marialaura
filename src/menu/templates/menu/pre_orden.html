@@ -1,10 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{
 
-</body>
-</html>
+{% block content %}
+<section class="module">
+		<div class="container">
+
+ <form method="post" id="preorden">{% csrf_token %}
+            <table border="1">
+                <thead>
+                <th>Lunes </th>
+                <th>martes </th>
+                <th>miercoles </th>
+                <th>jueves </th>
+                <th>viernes </th>
+                </thead>
+                <tbody>
+                <td class=" col-md-2">{% for mo in lunes %}<b>Cant.:</b> <input type='number' class='item-qty' name='mo_qty' style="width: 66px;" value="1" /><b>Plato:</b>{{mo.title}}</br> Acompaña: <select name="mo_var">{% for var in mo.variation_set.all %} <option value="{{var}}">{{var}}</option>{% endfor %}</select>{% endfor %}</td>
+                <td class=" col-md-2">{% for tu in martes %}<b>Cant.:</b><input type='number' class='item-qty' name='tu_qty' style="width: 66px;" value="1" /> <b>Plato:</b>{{tu.title}}</br> Acompaña: <select name="tu_var">{% for var in tu.variation_set.all %} <option value="{{var}}">{{var}}</option>{% endfor %}</select>{% endfor %}</td>
+                <td class=" col-md-2">{% for we in miercoles %}<b>Cant.:</b><input type='number' class='item-qty' name='we_qty' style="width: 66px;" value="1" /><b>Plato:</b>{{we.title}}</br> Acompaña: <select name="we_var">{% for var in we.variation_set.all %} <option value="{{var}}">{{var}}</option>{% endfor %}</select>{% endfor %}</td>
+                <td class=" col-md-2">{% for th in jueves %}<b>Cant.:</b><input type='number' class='item-qty' name='th_qty' style="width: 66px;" value="1" /> <b>Plato:</b>{{th.title}}</br> Acompaña: <select name="th_var">{% for var in th.variation_set.all %} <option value="{{var}}">{{var}}</option>{% endfor %}</select>{% endfor %}</td>
+                <td class=" col-md-2">{% for fr in viernes %}<b>Cant.:</b><input type='number' class='item-qty' name='fr_qty' style="width: 66px;" value="1" /><b>Plato:</b>{{fr.title}}</br> Acompaña: <select name="fr_var">{% for var in fr.variation_set.all %} <option value="{{var}}">{{var}}</option>{% endfor %}</select>{% endfor %}</td>
+                </tbody>
+            </table>
+
+            <input type="submit" class="btn btn-custom2"  id="confirm">
+            <input type="reset" value="Reiniciar">
+</form>
+
+    </div>
+</section>
+{% endblock %}
+<script>
+
+    {% block jquery %}
+
+        $(function() {
+            $('form#preorden').submit(function() {
+                var c = confirm("Desea Continuar con esta Orden");
+                return c;
+            });
+        });
+
+    {% endblock %}
+
+
+</script>
