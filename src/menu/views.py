@@ -7,6 +7,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 
 from .models import Menu, MenuWeek
+from products.models import Product
 
 
 class MenuListView(ListView):
@@ -20,3 +21,4 @@ class MenuListView(ListView):
 
 class MenuDetailView(DetailView):
     model = Menu
+

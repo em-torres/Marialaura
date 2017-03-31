@@ -17,6 +17,7 @@ from orders.mixins import CartOrderMixin
 from orders.models import UserCheckout, Order, UserAddress
 
 from products.models import Variation
+from menu.models import MenuWeek
 
 from .models import Cart, CartItem
 
@@ -63,20 +64,24 @@ class CartView(SingleObjectMixin, View):
 
     def get(self, request, *args, **kwargs):
         cart = self.get_object()
-        day = request.GET.get('day')
+        mo = request.GET.get('lunes')
+        tu = request.GET.get('martes')
+        we = request.GET.get('miercoles')
+        th = request.GET.get('jueves')
+        fr = request.GET.get('viernes')
         item_id = request.GET.get("item")
         delete_item = request.GET.get("delete", False)
         flash_message = ""
         item_added = False
         if item_id:
-            item_instance = get_object_or_404(Variation, id=item_id)
-            qty = request.GET.get("qty", 1)
+            item_instance = get_object_or_404(MenuWeek, id=item_id)
+            qty = 1
             try:
                 if int(qty) < 1:
                     delete_item = True
             except:
                 raise Http404
-            cart_item, created = CartItem.objects.get_or_create(cart=cart, item=item_instance, day=day)
+            cart_item, created = CartItem.objects.get_or_create(cart=cart, item=item_instance, mo=mo, tu=tu, we=we, th=th, fr=fr)
             if created:
                 flash_message = "Successfully added to the cart"
                 item_added = True
@@ -93,10 +98,6 @@ class CartView(SingleObjectMixin, View):
                 # return cart_item.cart.get_absolute_url()
 
         if request.is_ajax():
-            try:
-                day = cart_item.day
-            except:
-                day = None
             try:
                 total = cart_item.line_item_total
             except:

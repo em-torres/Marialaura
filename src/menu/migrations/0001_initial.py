@@ -7,7 +7,7 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('products', '0008_productfeatured_text_css_color'),
+        ('products', '0001_initial'),
     ]
 
     operations = [
@@ -26,7 +26,9 @@ class Migration(migrations.Migration):
                 ('week', models.CharField(max_length=120, null=True, blank=True)),
                 ('start_date', models.DateField(unique=True)),
                 ('end_date', models.DateField(unique=True)),
+                ('limit_pay', models.DateField(unique=True)),
                 ('active', models.BooleanField(default=False)),
+                ('price', models.DecimalField(max_digits=10, decimal_places=2)),
             ],
         ),
         migrations.AddField(

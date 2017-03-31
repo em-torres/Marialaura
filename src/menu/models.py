@@ -2,9 +2,9 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.db.models.signals import pre_save
 from django.core.exceptions import ValidationError, NON_FIELD_ERRORS
+from django.utils.safestring import mark_safe
 
 from products.models import Product
-
 
 
 # Create your models here.
@@ -18,20 +18,22 @@ class MenuManager(models.Manager):
     def get_queryset(self):
         return MenuQuerySet(self.model, using=self._db)
 
+
 def upload_location(instance, filename):
-    return "menu_week/%s/%s" %(instance.id, filename)
+    return "menu_week/%s/%s" % (instance.id, filename)
 
 
 class MenuWeek(models.Model):
     week = models.CharField(max_length=120, null=True, blank=True)
     start_date = models.DateField(auto_now_add=False, auto_now=False, unique=True)
     end_date = models.DateField(auto_now_add=False, auto_now=False, unique=True)
+    limit_pay = models.DateField(auto_now_add=False, auto_now=False, unique=True)
     active = models.BooleanField(default=False)
-    image = models.ImageField(upload_to=upload_location,null=True, blank=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
 
     object = MenuManager()
 
-    def __unicode__(self):
+    def get_title(self):
         date = self.start_date.strftime('%d/%m/%y') + self.end_date.strftime(' to %d/%m/%y')
         return date
 
@@ -63,6 +65,12 @@ class MenuWeek(models.Model):
             raise ValidationError({
                 NON_FIELD_ERRORS: ['overlapping date range', ],
             })
+
+    def add_to_cart(self):
+        return "%s?item=%s&qty=1" % (reverse("cart"), self.id)
+
+    def remove_from_cart(self):
+        return "%s?item=%s&qty=1&delete=True" % (reverse("cart"), self.id)
 
 
 class Menu(models.Model):

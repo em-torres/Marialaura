@@ -10,7 +10,7 @@ $(".submit-btn").click(function(event){
 	var formData = $(".add-form").serialize();
 	console.log(formData);
 	$.ajax({
-		type: "GET", // "POST"
+		type: "POST", // "GET"
 		url: "{% url 'cart' %}",
 		data: formData,
 		success: function(data) {
