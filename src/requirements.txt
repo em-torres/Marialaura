@@ -3,6 +3,7 @@ asn1crypto==0.22.0
 braintree==3.19.0
 cffi==1.10.0
 cryptography==1.8.1
+decorator==4.0.11
 dj-database-url==0.4.2
 dj-static==0.0.6
 Django==1.8.4
@@ -11,11 +12,16 @@ django-filter==0.11.0
 django-registration-redux==1.2
 django-toolbelt==0.0.1
 enum34==1.1.6
+ez-setup==0.9
 get==0.0.0
 gunicorn==19.7.1
 idna==2.5
+imageio==2.1.2
 ipaddress==1.0.18
+moviepy==0.2.2.13
+music21==3.1.0
 ndg-httpsclient==0.4.2
+numpy==1.12.1
 packaging==16.8
 Pillow==2.9.0
 post==0.0.0
@@ -31,3 +37,6 @@ requests==2.7.0
 setupfiles==0.0.0
 six==1.10.0
 static3==0.7.0
+tqdm==4.11.2
+unroll==0.1.0
+whitenoise==3.3.0
