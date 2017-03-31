@@ -1,19 +1,18 @@
 {% extends "base.html" %}
-{% load crispy_forms_tags %}
+{% load staticfiles %}
 
 <script>
 {% block jquery %}
 
 // ajax add to cart
-$("#submit-btn").click(function(event){
+$(".submit-btn").click(function(event){
 	event.preventDefault();
-	var formData = $("#add-form").serialize();
-	var item = formData.split("&");
-	console.log(item);
+	var formData = $(".add-form").serialize();
+	console.log(formData);
 	$.ajax({
-		type: "POST", // "GET"
+		type: "GET", // "POST"
 		url: "{% url 'cart' %}",
-		data: item,
+		data: formData,
 		success: function(data) {
 			showFlashMessage(data.flash_message);
 			updateCartItemCount();
@@ -24,21 +23,24 @@ $("#submit-btn").click(function(event){
 			$("#add-form").submit()
 		}
 	})
+
+	// $("#add-form").submit()
+
 })
+
 {% endblock %}
 </script>
 
 {% block content %}
+	<p id='jquery-message' class='lead'></p>
+
+	<!-- Callout section start -->
 	<section id="callout-one" class="callout">
 		<div class="container">
 
 			<div class="row">
 				<div class="col-sm-2 col-sm-offset-5 text-center long-down">
-					{% if object.menu_week.image %}
-					<img src="{{ object.menu_week.image.url }}" alt="" style="width=400; Height=250;">
-					{% else %}
-					<img src="" alt=""> AAAAAA
-					{% endif %}
+					<img src="{% static 'images/divider-top.svg' %}" alt="" style="width=400; Height=250;">
 				</div>
 			</div><!-- .row -->
 
@@ -50,14 +52,304 @@ $("#submit-btn").click(function(event){
 
 		</div><!-- .container -->
 	</section>
-<form id='add-form' method='GET' action="{% url 'cart' %}">
-<p id='jquery-message' class='lead'></p>
-{% include "menu/menu_select.html" with object=object %}
-<br/>
-	<input class='form-control' type='number' name='qty' value='1' />
-<br/>
-<input id='submit-btn' type='submit' value='Add to Cart' class='btn btn-default' />
-</form>
+
+	<!-- Callout section end -->
+
+
+	<section class="module">
+		<div class="container">
+
+  		{% include "menu/menu_select.html" %}
+
+		</div><!-- .container -->
+	</section>
+
+	<!-- Menu end -->
+
+<!-- Lado izquierdo y primeras opciones -->
+<!--<div class="row">-->
+			<!--<div class="col-sm-6">-->
+
+				<!--<div class="menu">-->
+				  <!--<form class='add-form' method='GET' action="{% url 'cart' %}">-->
+				   <!--<div class="row">-->
+						<!--<div class="col-sm-8">-->
+							<!--<h4 class="menu-title">{{object.mo1}}</h4>-->
+							<!--<div class="menu-detail">-->
+							<!--{% if object.mo1.variation_set.count > 1 %}-->
+								<!--{% for var_obj in object.mo1.variation_set.all %}-->
+								   <!--<input type="checkbox" name="item" value="{{var_obj.item}}">{{var_obj}} /-->
+								<!--{% endfor %}-->
+
+							<!--{% else  %}-->
+								<!--<input type='hidden' name='item' value='{{ object.mo1.variation_set.first.id}}' />{{ object.mo1.variation_set.first.title }}-->
+							<!--{% endif %}-->
+							<!--</div>-->
+						<!--</div>-->
+						<!--<div class="col-sm-4 menu-price-detail">-->
+							<!--<h4 class="menu-price">Lunes</h4>-->
+						<!--<input class='form-control' type='number' name='qty' value='1' />-->
+						<!--&lt;!&ndash;<input type='hidden' name='day' value='lunes' />&ndash;&gt;-->
+						<!--<br/>-->
+						<!--<input class='btn btn-default submit-btn' type='submit' value='Add to Cart'/>-->
+						<!--</div>-->
+					<!--</div>-->
+				  <!--</form>-->
+				<!--</div>-->
+
+				<!--<div class="menu">-->
+				  <!--<form class='add-form' method='GET' action="{% url 'cart' %}">-->
+				   <!--<div class="row">-->
+						<!--<div class="col-sm-8">-->
+							<!--<h4 class="menu-title">{{object.tu1}}</h4>-->
+							<!--<div class="menu-detail">-->
+							<!--{% if object.tu1.variation_set.count > 1 %}-->
+								<!--{% for var_obj in object.tu1.variation_set.all %}-->
+								   <!--<input type="checkbox" name="item" value="{{var_obj.item}}">{{var_obj}} /-->
+								<!--{% endfor %}-->
+
+							<!--{% else  %}-->
+								<!--<input type='hidden' name='item' value='{{ object.tu1.variation_set.first.id}}' />{{ object.tu1.variation_set.first.title }}-->
+							<!--{% endif %}-->
+							<!--</div>-->
+						<!--</div>-->
+						<!--<div class="col-sm-4 menu-price-detail">-->
+							<!--<h4 class="menu-price">Martes</h4>-->
+						<!--<input class='form-control' type='number' name='qty' value='1' />-->
+						<!--&lt;!&ndash;<input type='hidden' name='day' value='martes' />&ndash;&gt;-->
+						<!--<br/>-->
+						<!--<input class='btn btn-default submit-btn' type='submit' value='Add to Cart'/>-->
+						<!--</div>-->
+					<!--</div>-->
+				  <!--</form>-->
+				<!--</div>-->
+
+					<!--<div class="menu">-->
+				  <!--<form class='add-form' method='GET' action="{% url 'cart' %}">-->
+				   <!--<div class="row">-->
+						<!--<div class="col-sm-8">-->
+							<!--<h4 class="menu-title">{{object.we1}}</h4>-->
+							<!--<div class="menu-detail">-->
+							<!--{% if object.we1.variation_set.count > 1 %}-->
+								<!--{% for var_obj in object.we1.variation_set.all %}-->
+								   <!--<input type="checkbox" name="item" value="{{var_obj.item}}">{{var_obj}} /-->
+								<!--{% endfor %}-->
+
+							<!--{% else  %}-->
+								<!--<input type='hidden' name='item' value='{{ object.we1.variation_set.first.id}}' />{{ object.we1.variation_set.first.title }}-->
+							<!--{% endif %}-->
+							<!--</div>-->
+						<!--</div>-->
+						<!--<div class="col-sm-4 menu-price-detail">-->
+							<!--<h4 class="menu-price">Miercoles</h4>-->
+						<!--<input class='form-control' type='number' name='qty' value='1' />-->
+						<!--&lt;!&ndash;<input type='hidden' name='day' value='miercoles' />&ndash;&gt;-->
+						<!--<br/>-->
+						<!--<input class='btn btn-default submit-btn' type='submit' value='Add to Cart'/>-->
+						<!--</div>-->
+					<!--</div>-->
+				  <!--</form>-->
+				<!--</div>-->
+
+					<!--<div class="menu">-->
+				  <!--<form class='add-form' method='GET' action="{% url 'cart' %}">-->
+				   <!--<div class="row">-->
+						<!--<div class="col-sm-8">-->
+							<!--<h4 class="menu-title">{{object.th1}}</h4>-->
+							<!--<div class="menu-detail">-->
+							<!--{% if object.th1.variation_set.count > 1 %}-->
+								<!--{% for var_obj in object.th1.variation_set.all %}-->
+								   <!--<input type="checkbox" name="item" value="{{var_obj.item}}">{{var_obj}} /-->
+								<!--{% endfor %}-->
+
+							<!--{% else  %}-->
+								<!--<input type='hidden' name='item' value='{{ object.th1.variation_set.first.id}}' />{{ object.th1.variation_set.first.title }}-->
+							<!--{% endif %}-->
+							<!--</div>-->
+						<!--</div>-->
+						<!--<div class="col-sm-4 menu-price-detail">-->
+							<!--<h4 class="menu-price">jueves</h4>-->
+						<!--<input class='form-control' type='number' name='qty' value='1' />-->
+						<!--&lt;!&ndash;<input type='hidden' name='day' value='jueves' />&ndash;&gt;-->
+						<!--<br/>-->
+						<!--<input class='btn btn-default submit-btn' type='submit' value='Add to Cart'/>-->
+						<!--</div>-->
+					<!--</div>-->
+				  <!--</form>-->
+				<!--</div>-->
+
+					<!--<div class="menu">-->
+				  <!--<form class='add-form' method='GET' action="{% url 'cart' %}">-->
+				   <!--<div class="row">-->
+						<!--<div class="col-sm-8">-->
+							<!--<h4 class="menu-title">{{object.fr1}}</h4>-->
+							<!--<div class="menu-detail">-->
+							<!--{% if object.fr1.variation_set.count > 1 %}-->
+								<!--{% for var_obj in object.fr1.variation_set.all %}-->
+								   <!--<input type="checkbox" name="item" value="{{var_obj.item}}">{{var_obj}} /-->
+								<!--{% endfor %}-->
+
+							<!--{% else  %}-->
+								<!--<input type='hidden' name='item' value='{{ object.fr1.variation_set.first.id}}' />{{ object.fr1.variation_set.first.title }}-->
+							<!--{% endif %}-->
+							<!--</div>-->
+						<!--</div>-->
+						<!--<div class="col-sm-4 menu-price-detail">-->
+							<!--<h4 class="menu-price">Viernes</h4>-->
+						<!--<input class='form-control' type='number' name='qty' value='1' />-->
+						<!--&lt;!&ndash;<input type='hidden' name='day' value='viernes' />&ndash;&gt;-->
+						<!--<br/>-->
+						<!--<input class='btn btn-default submit-btn' type='submit' value='Add to Cart'/>-->
+						<!--</div>-->
+					<!--</div>-->
+				  <!--</form>-->
+				<!--</div>-->
+
+
+			<!--</div>&lt;!&ndash; .col-sm-6 &ndash;&gt;-->
+
+<!--&lt;!&ndash; Lado Derecho y segunda opciones &ndash;&gt;-->
+			<!--<div class="col-sm-6">-->
+
+				<!--<div class="menu">-->
+				  <!--<form class='add-form' method='GET' action="{% url 'cart' %}">-->
+				   <!--<div class="row">-->
+						<!--<div class="col-sm-8">-->
+							<!--<h4 class="menu-title">{{object.mo2}}</h4>-->
+							<!--<div class="menu-detail">-->
+							<!--{% if object.mo2.variation_set.count > 1 %}-->
+								<!--{% for var_obj in object.mo2.variation_set.all %}-->
+								   <!--<input type="checkbox" name="item" value="{{var_obj.item}}">{{var_obj}} /-->
+								<!--{% endfor %}-->
+
+							<!--{% else  %}-->
+								<!--<input type='hidden' name='item' value='{{ object.mo2.variation_set.first.id}}' />{{ object.mo2.variation_set.first.title }}-->
+							<!--{% endif %}-->
+							<!--</div>-->
+						<!--</div>-->
+						<!--<div class="col-sm-4 menu-price-detail">-->
+							<!--<h4 class="menu-price">Lunes</h4>-->
+						<!--<input class='form-control' type='number' name='qty' value='1' />-->
+						<!--&lt;!&ndash;<input type='hidden' name='day' value='lunes' />&ndash;&gt;-->
+						<!--<br/>-->
+						<!--<input class='btn btn-default submit-btn' type='submit' value='Add to Cart'/>-->
+						<!--</div>-->
+					<!--</div>-->
+				  <!--</form>-->
+				<!--</div>-->
+
+				<!--<div class="menu">-->
+				  <!--<form class='add-form' method='GET' action="{% url 'cart' %}">-->
+				   <!--<div class="row">-->
+						<!--<div class="col-sm-8">-->
+							<!--<h4 class="menu-title">{{object.tu2}}</h4>-->
+							<!--<div class="menu-detail">-->
+							<!--{% if object.tu2.variation_set.count > 1 %}-->
+								<!--{% for var_obj in object.tu2.variation_set.all %}-->
+								   <!--<input type="checkbox" name="item" value="{{var_obj.item}}">{{var_obj}} /-->
+								<!--{% endfor %}-->
+
+							<!--{% else  %}-->
+								<!--<input type='hidden' name='item' value='{{ object.tu2.variation_set.first.id}}' />{{ object.tu2.variation_set.first.title }}-->
+							<!--{% endif %}-->
+							<!--</div>-->
+						<!--</div>-->
+						<!--<div class="col-sm-4 menu-price-detail">-->
+							<!--<h4 class="menu-price">Martes</h4>-->
+						<!--<input class='form-control' type='number' name='qty' value='1' />-->
+						<!--&lt;!&ndash;<input type='hidden' name='day' value='martes' />&ndash;&gt;-->
+						<!--<br/>-->
+						<!--<input class='btn btn-default submit-btn' type='submit' value='Add to Cart'/>-->
+						<!--</div>-->
+					<!--</div>-->
+				  <!--</form>-->
+				<!--</div>-->
+
+					<!--<div class="menu">-->
+				  <!--<form class='add-form' method='GET' action="{% url 'cart' %}">-->
+				   <!--<div class="row">-->
+						<!--<div class="col-sm-8">-->
+							<!--<h4 class="menu-title">{{object.we1}}</h4>-->
+							<!--<div class="menu-detail">-->
+							<!--{% if object.we2.variation_set.count > 1 %}-->
+								<!--{% for var_obj in object.we2.variation_set.all %}-->
+								   <!--<input type="checkbox" name="item" value="{{var_obj.item}}">{{var_obj}} /-->
+								<!--{% endfor %}-->
+
+							<!--{% else  %}-->
+								<!--<input type='hidden' name='item' value='{{ object.we2.variation_set.first.id}}' />{{ object.we2.variation_set.first.title }}-->
+							<!--{% endif %}-->
+							<!--</div>-->
+						<!--</div>-->
+						<!--<div class="col-sm-4 menu-price-detail">-->
+							<!--<h4 class="menu-price">Miercoles</h4>-->
+						<!--<input class='form-control' type='number' name='qty' value='1' />-->
+						<!--&lt;!&ndash;<input type='hidden' name='day' value='miercoles' />&ndash;&gt;-->
+						<!--<br/>-->
+						<!--<input class='btn btn-default submit-btn' type='submit' value='Add to Cart'/>-->
+						<!--</div>-->
+					<!--</div>-->
+				  <!--</form>-->
+				<!--</div>-->
+
+					<!--<div class="menu">-->
+				  <!--<form class='add-form' method='GET' action="{% url 'cart' %}">-->
+				   <!--<div class="row">-->
+						<!--<div class="col-sm-8">-->
+							<!--<h4 class="menu-title">{{object.th2}}</h4>-->
+							<!--<div class="menu-detail">-->
+							<!--{% if object.th2.variation_set.count > 1 %}-->
+								<!--{% for var_obj in object.th2.variation_set.all %}-->
+								   <!--<input type="checkbox" name="item" value="{{var_obj.item}}">{{var_obj}} /-->
+								<!--{% endfor %}-->
+
+							<!--{% else  %}-->
+								<!--<input type='hidden' name='item' value='{{ object.th2.variation_set.first.id}}' />{{ object.th2.variation_set.first.title }}-->
+							<!--{% endif %}-->
+							<!--</div>-->
+						<!--</div>-->
+						<!--<div class="col-sm-4 menu-price-detail">-->
+							<!--<h4 class="menu-price">jueves</h4>-->
+						<!--<input class='form-control' type='number' name='qty' value='1' />-->
+						<!--&lt;!&ndash;<input type='hidden' name='day' value='jueves' />&ndash;&gt;-->
+						<!--<br/>-->
+						<!--<input class='btn btn-default submit-btn' type='submit' value='Add to Cart'/>-->
+						<!--</div>-->
+					<!--</div>-->
+				  <!--</form>-->
+				<!--</div>-->
+
+					<!--<div class="menu">-->
+				  <!--<form class='add-form' method='GET' action="{% url 'cart' %}">-->
+				   <!--<div class="row">-->
+						<!--<div class="col-sm-8">-->
+							<!--<h4 class="menu-title">{{object.fr2}}</h4>-->
+							<!--<div class="menu-detail">-->
+							<!--{% if object.fr2.variation_set.count > 1 %}-->
+								<!--{% for var_obj in object.fr2.variation_set.all %}-->
+								   <!--<input type="checkbox" name="item" value="{{var_obj.item}}">{{var_obj}} /-->
+								<!--{% endfor %}-->
+
+							<!--{% else  %}-->
+								<!--<input type='hidden' name='item' value='{{ object.fr2.variation_set.first.id}}' />{{ object.fr2.variation_set.first.title }}-->
+							<!--{% endif %}-->
+							<!--</div>-->
+						<!--</div>-->
+						<!--<div class="col-sm-4 menu-price-detail">-->
+							<!--<h4 class="menu-price">Viernes</h4>-->
+						<!--<input class='form-control' type='number' name='qty' value='1' />-->
+						<!--&lt;!&ndash;<input type='hidden' name='day' value='viernes' />&ndash;&gt;-->
+						<!--<br/>-->
+						<!--<input class='btn btn-default submit-btn' type='submit' value='Add to Cart'/>-->
+						<!--</div>-->
+					<!--</div>-->
+				  <!--</form>-->
+				<!--</div>-->
+
+
+			<!--</div>&lt;!&ndash; .col-sm-6 &ndash;&gt;-->
+<!--</div>&lt;!&ndash; .row &ndash;&gt;-->
+
 
 
 
