@@ -1,26 +1,32 @@
 from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import render
+from django.utils import timezone
 
 from products.models import ProductFeatured, Product
 from .forms import ContactForm, SignUpForm
 from .models import SignUp
+from menu.models import Menu
 
 # Create your views here.
 def home(request):
 	title = 'Sign Up Now'
 
-	featured_image = ProductFeatured.objects.filter(active=True).order_by("?").first()
-	products = Product.objects.all().order_by("?")[:6]
-	products2 = Product.objects.all().order_by("?")[:6]
+	#featured_image = ProductFeatured.objects.filter(active=True).order_by("?").first()
+	#products = Product.objects.all().order_by("?")[:6]
+	#products2 = Product.objects.all().order_by("?")[:6]
+	menu = Menu.objects.all().order_by('menu_week')
+	date = timezone.now().date()
 
 	form = SignUpForm(request.POST or None)
 	context = {
 		"title": title,
 		"form": form,
-		"featured_image":featured_image,
-		"products":products,
-		"products2":products2
+		'date': date,
+		'object_list': menu,
+	#	"featured_image":featured_image,
+	#	"products":products,
+	#	"products2":products2
 	}
 
 

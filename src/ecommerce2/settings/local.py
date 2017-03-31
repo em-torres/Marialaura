@@ -26,7 +26,7 @@ SECRET_KEY = secrety
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = user
@@ -63,6 +63,7 @@ INSTALLED_APPS = (
     'newsletter',
     'orders',
     'products',
+    'posts',
     'menu',
 )
 
@@ -129,11 +130,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_in_env", "static_root")
-    
+
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static_in_pro", "our_static"),
-    #os.path.join(BASE_DIR, "static_in_env"),
-    #'/var/www/static/',
+    #os.path.join(BASE_DIR, "static_in_pro", "our_static"),
+    os.path.join(BASE_DIR, "static"),
+    #'C:\Users\Fatima\Google Drive\django\ecommerce-2\src\static_in_pro',
 )
 
 MEDIA_URL = '/media/'
