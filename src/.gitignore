@@ -1,1 +1,7 @@
 ecommerce2/settings/db_password.py
+venv
+static_in_pro
+db.sqlite3
+*.pyc
+*.python
+
