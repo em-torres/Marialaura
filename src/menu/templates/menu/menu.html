@@ -1,17 +1,13 @@
-
-
+{% load staticfiles %}
 {% for object in object_list %}
- {% if object.menu_week.start_date >= today  or object.menu_week.end_date >= today %}
+{% if object.menu_week.start_date >= today  or object.menu_week.end_date >= today %}
+	<!-- Callout section start -->
 	<section id="callout-one" class="callout">
 		<div class="container">
 
 			<div class="row">
 				<div class="col-sm-2 col-sm-offset-5 text-center long-down">
-					{% if object.menu_week.image %}
-					<img src="{{ object.menu_week.image.url }}" alt="" style="width=400; Height=250;">
-					{% else %}
-					<img src="" alt=""> AAAAAA
-					{% endif %}
+					<img src="{% static 'images/divider-top.svg' %}" alt="" style="width=400; Height=250;">
 				</div>
 			</div><!-- .row -->
 
@@ -25,6 +21,13 @@
 	</section>
 
 	<!-- Callout section end -->
-{% include "menu/menu_thumbnail.html" with object=object %}
- {% endif %}
+
+	<!-- Menu start -->
+	<section class="module">
+		<div class="container">
+			{% include "menu/menu_thumbnail.html" with object=object %}
+			</div>
+	</section><!-- .container -->
+	<!-- Menu end -->
+{% endif %}
 {% endfor %}
