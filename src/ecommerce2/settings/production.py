@@ -1,10 +1,3 @@
-
-#static is here mvpland_static
-#postgresql -- mvpland
-#username -- cfedeploy
-#password -- ##
-
-
 """
 Django settings for ecommerce2 project.
 
@@ -17,157 +10,163 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
+from .db_password import user, user_pass, Braintree, secrety
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import os
 
-from django.conf import settings
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+#root of project
 
-if not settings.DEBUG:
-	import os
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
-	BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-	#root of project
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = secrety
 
-	# Quick-start development settings - unsuitable for production
-	# See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
 
-	# SECURITY WARNING: keep the secret key used in production secret!
-	SECRET_KEY = 'csqwlmc8s55o($rt6ozh7u+ui9zb-et00w$d90j8$^!nvj41_r'
+ALLOWED_HOSTS = ['*']
 
-	# SECURITY WARNING: don't run with debug turned on in production!
-	DEBUG = False
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = user
+EMAIL_HOST_PASSWORD = user_pass
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
-	ADMINS = (
-		("Justin", "codingforentrepreneurs@gmail.com"),
-
-		)
-
-	ALLOWED_HOSTS = ['cfedeploy.webfactional.com', 'trydjango.com', 'www.trydjango.com']
-	#purchasing domain name http://name.com
-
-	EMAIL_HOST = 'smtp.gmail.com'
-	EMAIL_HOST_USER = 'yourgmail@gmail.com'
-	EMAIL_HOST_PASSWORD = 'yourpassword'
-	EMAIL_PORT = 587
-	EMAIL_USE_TLS = True
-
-	''' 
-	If using gmail, you will need to
-	unlock Captcha to enable Django 
-	to  send for you:
-	https://accounts.google.com/displayunlockcaptcha
-	'''
+'''
+If using gmail, you will need to
+unlock Captcha to enable Django
+to  send for you:
+https://accounts.google.com/displayunlockcaptcha
+'''
 
 
 
-	# Application definition
+# Application definition
 
-	INSTALLED_APPS = (
-	    #django app
-	    'django.contrib.admin',
-	    'django.contrib.auth',
-	    'django.contrib.contenttypes',
-	    'django.contrib.sessions',
-	    'django.contrib.sites',
-	    'django.contrib.messages',
-	    'django.contrib.staticfiles',
-	    #third party apps
-	    'crispy_forms',
-	    'registration',
-	    #my apps
-	    'newsletter',
-	)
+INSTALLED_APPS = (
+    #django app
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    #third party apps
+    'crispy_forms',
+    'django_filters',
+    'registration',
+    #my apps
+    'carts',
+    'newsletter',
+    'orders',
+    'products',
+    'posts',
+    'menu',
+)
 
-	MIDDLEWARE_CLASSES = (
-	    'django.contrib.sessions.middleware.SessionMiddleware',
-	    'django.middleware.common.CommonMiddleware',
-	    'django.middleware.csrf.CsrfViewMiddleware',
-	    'django.contrib.auth.middleware.AuthenticationMiddleware',
-	    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-	    'django.contrib.messages.middleware.MessageMiddleware',
-	    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-	    'django.middleware.security.SecurityMiddleware',
-	)
+MIDDLEWARE_CLASSES = (
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+)
 
-	ROOT_URLCONF = 'ecommerce2.urls'
+ROOT_URLCONF = 'ecommerce2.urls'
 
-	TEMPLATES = [
-	    {
-	        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-	        'DIRS': [os.path.join(BASE_DIR, "templates")],
-	        'APP_DIRS': True,
-	        'OPTIONS': {
-	            'context_processors': [
-	                'django.template.context_processors.debug',
-	                'django.template.context_processors.request',
-	                'django.contrib.auth.context_processors.auth',
-	                'django.contrib.messages.context_processors.messages',
-	            ],
-	        },
-	    },
-	]
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
-	WSGI_APPLICATION = 'ecommerce2.wsgi.application'
-
-
-	# Database
-	# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
-	from .db_password import DBPASS
-
-	DATABASES = {
-	    'default': {
-	        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-	        'NAME': "mvpland",
-	        'USER': "cfedeploy",
-	        'PASSWORD': DBPASS,
-	    }
-	}
+WSGI_APPLICATION = 'ecommerce2.wsgi.application'
 
 
-	# Internationalization
-	# https://docs.djangoproject.com/en/1.8/topics/i18n/
+# Database
+# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-	LANGUAGE_CODE = 'en-us'
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'django_marialaura',
+		'USER': 'django_Admin',
+		'PASSWORD':'Asarozo1234-+',
+		'HOST':'localhost',
+		'PORT':''
 
-	TIME_ZONE = 'UTC'
+    }
+}
 
-	USE_I18N = True
+import dj_database_url
 
-	USE_L10N = True
-
-	USE_TZ = True
-
-
-	# Static files (CSS, JavaScript, Images)
-	# https://docs.djangoproject.com/en/1.8/howto/static-files/
-
-	STATIC_URL = '/static/'
-
-	STATIC_ROOT = '/home/cfedeploy/webapps/mvpland_static/'
-	#os.path.join(os.path.dirname(BASE_DIR), "static_in_env", "static_root")
-	    
-	STATICFILES_DIRS = (
-	    os.path.join(BASE_DIR, "static_in_pro", "our_static"),
-	    #os.path.join(BASE_DIR, "static_in_env"),
-	    #'/var/www/static/',
-	)
-
-	MEDIA_URL = '/media/'
-	MEDIA_ROOT = '/home/cfedeploy/webapps/mvpland_media/'
-	#os.path.join(os.path.dirname(BASE_DIR), "static_in_env", "media_root")
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 
-	#Crispy FORM TAGs SETTINGS
-	CRISPY_TEMPLATE_PACK = 'bootstrap3'
+# Internationalization
+# https://docs.djangoproject.com/en/1.8/topics/i18n/
+
+LANGUAGE_CODE = 'en-us'
+
+TIME_ZONE = 'UTC'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
 
 
-	#DJANGO REGISTRATION REDUX SETTINGS
-	ACCOUNT_ACTIVATION_DAYS = 7
-	REGISTRATION_AUTO_LOGIN = True
-	SITE_ID = 1
-	LOGIN_REDIRECT_URL = '/'
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.8/howto/static-files/
+
+STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_in_env", "static_root")
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+STATICFILES_DIRS = (
+    #os.path.join(BASE_DIR, "static_in_pro", "our_static"),
+    os.path.join(BASE_DIR, "static"),
+    #'C:\Users\Fatima\Google Drive\django\ecommerce-2\src\static_in_pro',
+)
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_in_env", "media_root")
 
 
 
+#Crispy FORM TAGs SETTINGS
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 
+#DJANGO REGISTRATION REDUX SETTINGS
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+
+
+#Braintree Payments Details
+BRAINTREE_PUBLIC = Braintree['public_key']
+BRAINTREE_PRIVATE = Braintree['private_key']
+BRAINTREE_MERCHANT_ID = Braintree['merchant_id']
+BRAINTREE_ENVIRONEMNT = Braintree['environment']

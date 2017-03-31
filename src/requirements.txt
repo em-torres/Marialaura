@@ -11,6 +11,7 @@ django-filter==0.11.0
 django-registration-redux==1.2
 django-toolbelt==0.0.1
 enum34==1.1.6
+ez-setup==0.9
 get==0.0.0
 gunicorn==19.7.1
 idna==2.5
@@ -31,3 +32,4 @@ requests==2.7.0
 setupfiles==0.0.0
 six==1.10.0
 static3==0.7.0
+whitenoise==3.3.0
